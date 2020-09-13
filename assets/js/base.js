@@ -158,9 +158,9 @@ $(document).ready(function () {
     $(window).resize(jqUpdateSize);
 
     //TEMP
-    $(window).on('load',function(){
-        $('#document').modal('show');
-    });
+    // $(window).on('load',function(){
+    //     $('#document').modal('show');
+    // });
 
     //SALARY CHANGE
     $('#salary-change').on('change', function(){
