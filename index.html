@@ -6,14 +6,30 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
     <link rel="stylesheet" href="assets/css/app.css" />
     <link rel="stylesheet" href="assets/css/ti.css">
+    <link rel="stylesheet" type="text/css" href="assets/vendor/notiflix2/notiflix-2.1.3.css">
+
+    <!-- UI HELPER - BRISE SE U PROJEKTU, kao i klasa js_uiHelperPanel klasama u markapu -->
+    <link rel="stylesheet" href="assets/css/helper.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <!-- <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script> -->
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
+    <script src="assets/vendor/notiflix2/notiflix-2.1.3.js"></script>
     <script src="assets/js/base.js"></script>
 </head>
 
 <body>
+    <div id="ui-helper">
+        <div>UI help tool - Remove in Production!</div>
+        <div class="font-weight-bold">
+            <span id="wWidth"></span>
+            <span> X </span> 
+            <span id="wHeight"></span>
+        </div>
+        <a href="javascript:void(0)" data-tab="recent-documents" class="helper-switch badge badge-danger">show recent documents</a>
+        <a href="javascript:void(0)" data-tab="filter-results" class="helper-switch badge badge-danger">show filter results</a>
+        <a href="javascript:void(0)" data-tab="filter-no-results" class="helper-switch badge badge-danger">show filter no-results</a>
+    </div>
     <header>
         <div class="container">
             <div class="row">
@@ -47,7 +63,7 @@
                                                     </div>
                                                 </div>
                                                 <div class="col-12 text-right mt-2">
-                                                    <span class="badge badge-secondary">yearly</span>
+                                                    <span class="badge badge-secondary">Performance appraisal</span>
                                                     <span class="badge badge-danger">follow-up open</span>
                                                 </div>
                                             </div>
@@ -243,10 +259,10 @@
                             <span class="input-error-message">some error</span>
                         </div> -->
 
-                    <!-- PERFORMANCE FILTER -->
+                    <!-- DOCUMENT FILTER -->
                     <div class="mt-4">
                         <div class="d-flex justify-content-between align-items-center">
-                            <span class="fb-panel-title mb-3">performance filter</span>
+                            <span class="fb-panel-title mb-3">document filter</span>
                         </div>
                         <form id="performance-filter">
                             <div class="row">
@@ -267,7 +283,7 @@
                                     <select class="form-control" name="talk" id="">
                                         <option selected val="reset">select talk type</option>
                                         <option>End of Probation</option>
-                                        <option>Yearly</option>
+                                        <option>Performance appraisal</option>
                                         <option>Ad Hoc</option>
                                         <option>Exit</option>
                                     </select>
@@ -292,10 +308,1398 @@
                     </div>
                 </div>
             </div>
-            <!-- DOCUMENTS / RESULTS -->
-            <div class="col-12 col-md-8 mt-5">
+            <!-- RECENT DOCUMENTS -->
+            <div class="col-12 col-md-8 mt-5 js_uiHelperPanel" id="recent-documents">
                 <div class="panel-general">
-                    <span class="fb-panel-title mb-3">latest documents</span>
+                    <span class="fb-panel-title mb-3">recent documents</span>
+                    <div class="row">
+                        <!-- DOC ENTRY -->
+                        <div class="col-12 col-xl-6 fb-doc-block js_loadMore">
+                            <div class="fb-doc-item mb-4">
+                                <a href="javascript:void(0)" class="div-link"></a>
+                                <div class="row">
+                                    <div class="col-12 d-flex justify-content-between">
+                                        <div class="d-flex justify-content-start align-items-center">
+                                            <div class="fb-profile">
+                                                <img src="assets/images/profile-img.jpg" alt="Name, Last Name" />
+                                            </div>
+                                            <div class="pl-2">
+                                                <div class="fb-employee-name">Marko Markovic</div>
+                                                <div class="fb-employee-data">
+                                                    <span class="fb-employee-unit d-inline-block text-nowrap text-truncate">Unit 001</span>
+                                                    <span class="fb-employee-team">Edelweiss - Internet Booking Engine</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="d-flex justify-content-end align-items-start">
+                                            <div class="badge badge-danger w-100">follow-up open</div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row mt-2">
+                                    <div class="col-3">
+                                        <small>location</small>
+                                        <div><span class="badge badge-light w-100">Belgrade</span></div>
+                                    </div>
+                                    <div class="col-3">
+                                        <small>years working</small>
+                                        <div><span class="badge badge-light w-100">4</span></div>
+                                    </div>
+                                    <div class="col-3">
+                                        <small>talk type</small>
+                                        <div><span class="badge badge-light w-100">Ad Hoc</span></div>
+                                    </div>
+                                    <div class="col-3">
+                                        <small>talk date</small>
+                                        <div><span class="badge badge-light w-100">16.08.2020</span></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- DOC ENTRY -->
+                        <div class="col-12 col-xl-6 fb-doc-block js_loadMore">
+                            <div class="fb-doc-item mb-4">
+                                <a href="javascript:void(0)" class="div-link"></a>
+                                <div class="row">
+                                    <div class="col-12 d-flex justify-content-between">
+                                        <div class="d-flex justify-content-start align-items-center">
+                                            <div class="fb-profile">
+                                                <img src="assets/images/profile-img.jpg" alt="Name, Last Name" />
+                                            </div>
+                                            <div class="pl-2">
+                                                <div class="fb-employee-name">Dejan Dejanovic</div>
+                                                <div class="fb-employee-data">
+                                                    <span class="fb-employee-unit">Unit 002</span>
+                                                    <span class="fb-employee-team">ExLibris</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="d-flex justify-content-end align-items-start">
+                                            <div class="badge badge-success w-100">done</div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row mt-2">
+                                    <div class="col-3">
+                                        <small>location</small>
+                                        <div><span class="badge badge-light w-100">Nis</span></div>
+                                    </div>
+                                    <div class="col-3">
+                                        <small>years working</small>
+                                        <div><span class="badge badge-light w-100">1</span></div>
+                                    </div>
+                                    <div class="col-3">
+                                        <small>talk type</small>
+                                        <div><span class="badge badge-light w-100">PAT 2020</span></div>
+                                    </div>
+                                    <div class="col-3">
+                                        <small>talk date</small>
+                                        <div><span class="badge badge-light w-100">15.08.2020</span></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- DOC ENTRY -->
+                        <div class="col-12 col-xl-6 fb-doc-block js_loadMore">
+                            <div class="fb-doc-item mb-4">
+                                <a href="javascript:void(0)" class="div-link"></a>
+                                <div class="row">
+                                    <div class="col-12 d-flex justify-content-between">
+                                        <div class="d-flex justify-content-start align-items-center">
+                                            <div class="fb-profile">
+                                                <img src="assets/images/profile-img.jpg" alt="Name, Last Name" />
+                                            </div>
+                                            <div class="pl-2">
+                                                <div class="fb-employee-name">Pavle Pavlovic</div>
+                                                <div class="fb-employee-data">
+                                                    <span class="fb-employee-unit">Unit 003</span>
+                                                    <span class="fb-employee-team">Swiss</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="d-flex justify-content-end align-items-start">
+                                            <div class="badge badge-success w-100">follow-up done</div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row mt-2">
+                                    <div class="col-3">
+                                        <small>location</small>
+                                        <div><span class="badge badge-light w-100">Belgrade</span></div>
+                                    </div>
+                                    <div class="col-3">
+                                        <small>years working</small>
+                                        <div><span class="badge badge-light w-100">2</span></div>
+                                    </div>
+                                    <div class="col-3">
+                                        <small>talk type</small>
+                                        <div><span class="badge badge-light w-100">Ad Hoc</span></div>
+                                    </div>
+                                    <div class="col-3">
+                                        <small>talk date</small>
+                                        <div><span class="badge badge-light w-100">15.08.2020</span></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- DOC ENTRY -->
+                        <div class="col-12 col-xl-6 fb-doc-block js_loadMore">
+                            <div class="fb-doc-item mb-4">
+                                <a href="javascript:void(0)" class="div-link"></a>
+                                <div class="row">
+                                    <div class="col-12 d-flex justify-content-between">
+                                        <div class="d-flex justify-content-start align-items-center">
+                                            <div class="fb-profile">
+                                                <img src="assets/images/profile-img.jpg" alt="Name, Last Name" />
+                                            </div>
+                                            <div class="pl-2">
+                                                <div class="fb-employee-name">Milan Milanovic</div>
+                                                <div class="fb-employee-data">
+                                                    <span class="fb-employee-unit">Unit 001</span>
+                                                    <span class="fb-employee-team">Crealogix - Digital banking</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="d-flex justify-content-end align-items-start">
+                                            <div class="badge badge-danger w-100">follow-up open</div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row mt-2">
+                                    <div class="col-3">
+                                        <small>location</small>
+                                        <div><span class="badge badge-light w-100">Belgrade</span></div>
+                                    </div>
+                                    <div class="col-3">
+                                        <small>years working</small>
+                                        <div><span class="badge badge-light w-100">0</span></div>
+                                    </div>
+                                    <div class="col-3">
+                                        <small>talk type</small>
+                                        <div><span class="badge badge-light w-100">EOP</span></div>
+                                    </div>
+                                    <div class="col-3">
+                                        <small>talk date</small>
+                                        <div><span class="badge badge-light w-100">14.08.2020</span></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- DOC ENTRY -->
+                        <div class="col-12 col-xl-6 fb-doc-block js_loadMore">
+                            <div class="fb-doc-item mb-4">
+                                <a href="javascript:void(0)" class="div-link"></a>
+                                <div class="row">
+                                    <div class="col-12 d-flex justify-content-between">
+                                        <div class="d-flex justify-content-start align-items-center">
+                                            <div class="fb-profile">
+                                                <img src="assets/images/profile-img.jpg" alt="Name, Last Name" />
+                                            </div>
+                                            <div class="pl-2">
+                                                <div class="fb-employee-name">Ime Prezime</div>
+                                                <div class="fb-employee-data">
+                                                    <span class="fb-employee-unit">Unit</span>
+                                                    <span class="fb-employee-team">Client - team name</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="d-flex justify-content-end align-items-start">
+                                            <div class="badge badge-success w-100">talk type status</div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-3">
+                                        <small>location</small>
+                                        <div><span class="badge badge-light w-100">location</span></div>
+                                    </div>
+                                    <div class="col-3">
+                                        <small>years working</small>
+                                        <div><span class="badge badge-light w-100">number</span></div>
+                                    </div>
+                                    <div class="col-3">
+                                        <small>talk type</small>
+                                        <div><span class="badge badge-light w-100">talk type</span></div>
+                                    </div>
+                                    <div class="col-3">
+                                        <small>talk date</small>
+                                        <div><span class="badge badge-light w-100">date</span></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- DOC ENTRY -->
+                        <div class="col-12 col-xl-6 fb-doc-block js_loadMore">
+                            <div class="fb-doc-item mb-4">
+                                <a href="javascript:void(0)" class="div-link"></a>
+                                <div class="row">
+                                    <div class="col-12 d-flex justify-content-between">
+                                        <div class="d-flex justify-content-start align-items-center">
+                                            <div class="fb-profile">
+                                                <img src="assets/images/profile-img.jpg" alt="Name, Last Name" />
+                                            </div>
+                                            <div class="pl-2">
+                                                <div class="fb-employee-name">Ime Prezime</div>
+                                                <div class="fb-employee-data">
+                                                    <span class="fb-employee-unit">Unit</span>
+                                                    <span class="fb-employee-team">Client - team name</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="d-flex justify-content-end align-items-start">
+                                            <div class="badge badge-success w-100">talk type status</div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-3">
+                                        <small>location</small>
+                                        <div><span class="badge badge-light w-100">location</span></div>
+                                    </div>
+                                    <div class="col-3">
+                                        <small>years working</small>
+                                        <div><span class="badge badge-light w-100">number</span></div>
+                                    </div>
+                                    <div class="col-3">
+                                        <small>talk type</small>
+                                        <div><span class="badge badge-light w-100">talk type</span></div>
+                                    </div>
+                                    <div class="col-3">
+                                        <small>talk date</small>
+                                        <div><span class="badge badge-light w-100">date</span></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- DOC ENTRY -->
+                        <div class="col-12 col-xl-6 fb-doc-block js_loadMore">
+                            <div class="fb-doc-item mb-4">
+                                <a href="javascript:void(0)" class="div-link"></a>
+                                <div class="row">
+                                    <div class="col-12 d-flex justify-content-between">
+                                        <div class="d-flex justify-content-start align-items-center">
+                                            <div class="fb-profile">
+                                                <img src="assets/images/profile-img.jpg" alt="Name, Last Name" />
+                                            </div>
+                                            <div class="pl-2">
+                                                <div class="fb-employee-name">Ime Prezime</div>
+                                                <div class="fb-employee-data">
+                                                    <span class="fb-employee-unit">Unit</span>
+                                                    <span class="fb-employee-team">Client - team name</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="d-flex justify-content-end align-items-start">
+                                            <div class="badge badge-success w-100">talk type status</div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-3">
+                                        <small>location</small>
+                                        <div><span class="badge badge-light w-100">location</span></div>
+                                    </div>
+                                    <div class="col-3">
+                                        <small>years working</small>
+                                        <div><span class="badge badge-light w-100">number</span></div>
+                                    </div>
+                                    <div class="col-3">
+                                        <small>talk type</small>
+                                        <div><span class="badge badge-light w-100">talk type</span></div>
+                                    </div>
+                                    <div class="col-3">
+                                        <small>talk date</small>
+                                        <div><span class="badge badge-light w-100">date</span></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- DOC ENTRY -->
+                        <div class="col-12 col-xl-6 fb-doc-block js_loadMore">
+                            <div class="fb-doc-item mb-4">
+                                <a href="javascript:void(0)" class="div-link"></a>
+                                <div class="row">
+                                    <div class="col-12 d-flex justify-content-between">
+                                        <div class="d-flex justify-content-start align-items-center">
+                                            <div class="fb-profile">
+                                                <img src="assets/images/profile-img.jpg" alt="Name, Last Name" />
+                                            </div>
+                                            <div class="pl-2">
+                                                <div class="fb-employee-name">Ime Prezime</div>
+                                                <div class="fb-employee-data">
+                                                    <span class="fb-employee-unit">Unit</span>
+                                                    <span class="fb-employee-team">Client - team name</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="d-flex justify-content-end align-items-start">
+                                            <div class="badge badge-success w-100">talk type status</div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-3">
+                                        <small>location</small>
+                                        <div><span class="badge badge-light w-100">location</span></div>
+                                    </div>
+                                    <div class="col-3">
+                                        <small>years working</small>
+                                        <div><span class="badge badge-light w-100">number</span></div>
+                                    </div>
+                                    <div class="col-3">
+                                        <small>talk type</small>
+                                        <div><span class="badge badge-light w-100">talk type</span></div>
+                                    </div>
+                                    <div class="col-3">
+                                        <small>talk date</small>
+                                        <div><span class="badge badge-light w-100">date</span></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- DOC ENTRY -->
+                        <div class="col-12 col-xl-6 fb-doc-block js_loadMore">
+                            <div class="fb-doc-item mb-4">
+                                <a href="javascript:void(0)" class="div-link"></a>
+                                <div class="row">
+                                    <div class="col-12 d-flex justify-content-between">
+                                        <div class="d-flex justify-content-start align-items-center">
+                                            <div class="fb-profile">
+                                                <img src="assets/images/profile-img.jpg" alt="Name, Last Name" />
+                                            </div>
+                                            <div class="pl-2">
+                                                <div class="fb-employee-name">Ime Prezime</div>
+                                                <div class="fb-employee-data">
+                                                    <span class="fb-employee-unit">Unit</span>
+                                                    <span class="fb-employee-team">Client - team name</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="d-flex justify-content-end align-items-start">
+                                            <div class="badge badge-success w-100">talk type status</div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-3">
+                                        <small>location</small>
+                                        <div><span class="badge badge-light w-100">location</span></div>
+                                    </div>
+                                    <div class="col-3">
+                                        <small>years working</small>
+                                        <div><span class="badge badge-light w-100">number</span></div>
+                                    </div>
+                                    <div class="col-3">
+                                        <small>talk type</small>
+                                        <div><span class="badge badge-light w-100">talk type</span></div>
+                                    </div>
+                                    <div class="col-3">
+                                        <small>talk date</small>
+                                        <div><span class="badge badge-light w-100">date</span></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- DOC ENTRY -->
+                        <div class="col-12 col-xl-6 fb-doc-block js_loadMore">
+                            <div class="fb-doc-item mb-4">
+                                <a href="javascript:void(0)" class="div-link"></a>
+                                <div class="row">
+                                    <div class="col-12 d-flex justify-content-between">
+                                        <div class="d-flex justify-content-start align-items-center">
+                                            <div class="fb-profile">
+                                                <img src="assets/images/profile-img.jpg" alt="Name, Last Name" />
+                                            </div>
+                                            <div class="pl-2">
+                                                <div class="fb-employee-name">Ime Prezime</div>
+                                                <div class="fb-employee-data">
+                                                    <span class="fb-employee-unit">Unit</span>
+                                                    <span class="fb-employee-team">Client - team name</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="d-flex justify-content-end align-items-start">
+                                            <div class="badge badge-success w-100">talk type status</div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-3">
+                                        <small>location</small>
+                                        <div><span class="badge badge-light w-100">location</span></div>
+                                    </div>
+                                    <div class="col-3">
+                                        <small>years working</small>
+                                        <div><span class="badge badge-light w-100">number</span></div>
+                                    </div>
+                                    <div class="col-3">
+                                        <small>talk type</small>
+                                        <div><span class="badge badge-light w-100">talk type</span></div>
+                                    </div>
+                                    <div class="col-3">
+                                        <small>talk date</small>
+                                        <div><span class="badge badge-light w-100">date</span></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- DOC ENTRY -->
+                        <div class="col-12 col-xl-6 fb-doc-block js_loadMore">
+                            <div class="fb-doc-item mb-4">
+                                <a href="javascript:void(0)" class="div-link"></a>
+                                <div class="row">
+                                    <div class="col-12 d-flex justify-content-between">
+                                        <div class="d-flex justify-content-start align-items-center">
+                                            <div class="fb-profile">
+                                                <img src="assets/images/profile-img.jpg" alt="Name, Last Name" />
+                                            </div>
+                                            <div class="pl-2">
+                                                <div class="fb-employee-name">Ime Prezime</div>
+                                                <div class="fb-employee-data">
+                                                    <span class="fb-employee-unit">Unit</span>
+                                                    <span class="fb-employee-team">Client - team name</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="d-flex justify-content-end align-items-start">
+                                            <div class="badge badge-success w-100">talk type status</div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-3">
+                                        <small>location</small>
+                                        <div><span class="badge badge-light w-100">location</span></div>
+                                    </div>
+                                    <div class="col-3">
+                                        <small>years working</small>
+                                        <div><span class="badge badge-light w-100">number</span></div>
+                                    </div>
+                                    <div class="col-3">
+                                        <small>talk type</small>
+                                        <div><span class="badge badge-light w-100">talk type</span></div>
+                                    </div>
+                                    <div class="col-3">
+                                        <small>talk date</small>
+                                        <div><span class="badge badge-light w-100">date</span></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- DOC ENTRY -->
+                        <div class="col-12 col-xl-6 fb-doc-block js_loadMore">
+                            <div class="fb-doc-item mb-4">
+                                <a href="javascript:void(0)" class="div-link"></a>
+                                <div class="row">
+                                    <div class="col-12 d-flex justify-content-between">
+                                        <div class="d-flex justify-content-start align-items-center">
+                                            <div class="fb-profile">
+                                                <img src="assets/images/profile-img.jpg" alt="Name, Last Name" />
+                                            </div>
+                                            <div class="pl-2">
+                                                <div class="fb-employee-name">Ime Prezime</div>
+                                                <div class="fb-employee-data">
+                                                    <span class="fb-employee-unit">Unit</span>
+                                                    <span class="fb-employee-team">Client - team name</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="d-flex justify-content-end align-items-start">
+                                            <div class="badge badge-success w-100">talk type status</div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-3">
+                                        <small>location</small>
+                                        <div><span class="badge badge-light w-100">location</span></div>
+                                    </div>
+                                    <div class="col-3">
+                                        <small>years working</small>
+                                        <div><span class="badge badge-light w-100">number</span></div>
+                                    </div>
+                                    <div class="col-3">
+                                        <small>talk type</small>
+                                        <div><span class="badge badge-light w-100">talk type</span></div>
+                                    </div>
+                                    <div class="col-3">
+                                        <small>talk date</small>
+                                        <div><span class="badge badge-light w-100">date</span></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- DOC ENTRY -->
+                        <div class="col-12 col-xl-6 fb-doc-block js_loadMore">
+                            <div class="fb-doc-item mb-4">
+                                <a href="javascript:void(0)" class="div-link"></a>
+                                <div class="row">
+                                    <div class="col-12 d-flex justify-content-between">
+                                        <div class="d-flex justify-content-start align-items-center">
+                                            <div class="fb-profile">
+                                                <img src="assets/images/profile-img.jpg" alt="Name, Last Name" />
+                                            </div>
+                                            <div class="pl-2">
+                                                <div class="fb-employee-name">Ime Prezime</div>
+                                                <div class="fb-employee-data">
+                                                    <span class="fb-employee-unit">Unit</span>
+                                                    <span class="fb-employee-team">Client - team name</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="d-flex justify-content-end align-items-start">
+                                            <div class="badge badge-success w-100">talk type status</div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-3">
+                                        <small>location</small>
+                                        <div><span class="badge badge-light w-100">location</span></div>
+                                    </div>
+                                    <div class="col-3">
+                                        <small>years working</small>
+                                        <div><span class="badge badge-light w-100">number</span></div>
+                                    </div>
+                                    <div class="col-3">
+                                        <small>talk type</small>
+                                        <div><span class="badge badge-light w-100">talk type</span></div>
+                                    </div>
+                                    <div class="col-3">
+                                        <small>talk date</small>
+                                        <div><span class="badge badge-light w-100">date</span></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- DOC ENTRY -->
+                        <div class="col-12 col-xl-6 fb-doc-block js_loadMore">
+                            <div class="fb-doc-item mb-4">
+                                <a href="javascript:void(0)" class="div-link"></a>
+                                <div class="row">
+                                    <div class="col-12 d-flex justify-content-between">
+                                        <div class="d-flex justify-content-start align-items-center">
+                                            <div class="fb-profile">
+                                                <img src="assets/images/profile-img.jpg" alt="Name, Last Name" />
+                                            </div>
+                                            <div class="pl-2">
+                                                <div class="fb-employee-name">Ime Prezime</div>
+                                                <div class="fb-employee-data">
+                                                    <span class="fb-employee-unit">Unit</span>
+                                                    <span class="fb-employee-team">Client - team name</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="d-flex justify-content-end align-items-start">
+                                            <div class="badge badge-success w-100">talk type status</div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-3">
+                                        <small>location</small>
+                                        <div><span class="badge badge-light w-100">location</span></div>
+                                    </div>
+                                    <div class="col-3">
+                                        <small>years working</small>
+                                        <div><span class="badge badge-light w-100">number</span></div>
+                                    </div>
+                                    <div class="col-3">
+                                        <small>talk type</small>
+                                        <div><span class="badge badge-light w-100">talk type</span></div>
+                                    </div>
+                                    <div class="col-3">
+                                        <small>talk date</small>
+                                        <div><span class="badge badge-light w-100">date</span></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- DOC ENTRY -->
+                        <div class="col-12 col-xl-6 fb-doc-block js_loadMore">
+                            <div class="fb-doc-item mb-4">
+                                <a href="javascript:void(0)" class="div-link"></a>
+                                <div class="row">
+                                    <div class="col-12 d-flex justify-content-between">
+                                        <div class="d-flex justify-content-start align-items-center">
+                                            <div class="fb-profile">
+                                                <img src="assets/images/profile-img.jpg" alt="Name, Last Name" />
+                                            </div>
+                                            <div class="pl-2">
+                                                <div class="fb-employee-name">Ime Prezime</div>
+                                                <div class="fb-employee-data">
+                                                    <span class="fb-employee-unit">Unit</span>
+                                                    <span class="fb-employee-team">Client - team name</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="d-flex justify-content-end align-items-start">
+                                            <div class="badge badge-success w-100">talk type status</div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-3">
+                                        <small>location</small>
+                                        <div><span class="badge badge-light w-100">location</span></div>
+                                    </div>
+                                    <div class="col-3">
+                                        <small>years working</small>
+                                        <div><span class="badge badge-light w-100">number</span></div>
+                                    </div>
+                                    <div class="col-3">
+                                        <small>talk type</small>
+                                        <div><span class="badge badge-light w-100">talk type</span></div>
+                                    </div>
+                                    <div class="col-3">
+                                        <small>talk date</small>
+                                        <div><span class="badge badge-light w-100">date</span></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- DOC ENTRY -->
+                        <div class="col-12 col-xl-6 fb-doc-block js_loadMore">
+                            <div class="fb-doc-item mb-4">
+                                <a href="javascript:void(0)" class="div-link"></a>
+                                <div class="row">
+                                    <div class="col-12 d-flex justify-content-between">
+                                        <div class="d-flex justify-content-start align-items-center">
+                                            <div class="fb-profile">
+                                                <img src="assets/images/profile-img.jpg" alt="Name, Last Name" />
+                                            </div>
+                                            <div class="pl-2">
+                                                <div class="fb-employee-name">Ime Prezime</div>
+                                                <div class="fb-employee-data">
+                                                    <span class="fb-employee-unit">Unit</span>
+                                                    <span class="fb-employee-team">Client - team name</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="d-flex justify-content-end align-items-start">
+                                            <div class="badge badge-success w-100">talk type status</div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-3">
+                                        <small>location</small>
+                                        <div><span class="badge badge-light w-100">location</span></div>
+                                    </div>
+                                    <div class="col-3">
+                                        <small>years working</small>
+                                        <div><span class="badge badge-light w-100">number</span></div>
+                                    </div>
+                                    <div class="col-3">
+                                        <small>talk type</small>
+                                        <div><span class="badge badge-light w-100">talk type</span></div>
+                                    </div>
+                                    <div class="col-3">
+                                        <small>talk date</small>
+                                        <div><span class="badge badge-light w-100">date</span></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- DOC ENTRY -->
+                        <div class="col-12 col-xl-6 fb-doc-block js_loadMore">
+                            <div class="fb-doc-item mb-4">
+                                <a href="javascript:void(0)" class="div-link"></a>
+                                <div class="row">
+                                    <div class="col-12 d-flex justify-content-between">
+                                        <div class="d-flex justify-content-start align-items-center">
+                                            <div class="fb-profile">
+                                                <img src="assets/images/profile-img.jpg" alt="Name, Last Name" />
+                                            </div>
+                                            <div class="pl-2">
+                                                <div class="fb-employee-name">Ime Prezime</div>
+                                                <div class="fb-employee-data">
+                                                    <span class="fb-employee-unit">Unit</span>
+                                                    <span class="fb-employee-team">Client - team name</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="d-flex justify-content-end align-items-start">
+                                            <div class="badge badge-success w-100">talk type status</div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-3">
+                                        <small>location</small>
+                                        <div><span class="badge badge-light w-100">location</span></div>
+                                    </div>
+                                    <div class="col-3">
+                                        <small>years working</small>
+                                        <div><span class="badge badge-light w-100">number</span></div>
+                                    </div>
+                                    <div class="col-3">
+                                        <small>talk type</small>
+                                        <div><span class="badge badge-light w-100">talk type</span></div>
+                                    </div>
+                                    <div class="col-3">
+                                        <small>talk date</small>
+                                        <div><span class="badge badge-light w-100">date</span></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- DOC ENTRY -->
+                        <div class="col-12 col-xl-6 fb-doc-block js_loadMore">
+                            <div class="fb-doc-item mb-4">
+                                <a href="javascript:void(0)" class="div-link"></a>
+                                <div class="row">
+                                    <div class="col-12 d-flex justify-content-between">
+                                        <div class="d-flex justify-content-start align-items-center">
+                                            <div class="fb-profile">
+                                                <img src="assets/images/profile-img.jpg" alt="Name, Last Name" />
+                                            </div>
+                                            <div class="pl-2">
+                                                <div class="fb-employee-name">Ime Prezime</div>
+                                                <div class="fb-employee-data">
+                                                    <span class="fb-employee-unit">Unit</span>
+                                                    <span class="fb-employee-team">Client - team name</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="d-flex justify-content-end align-items-start">
+                                            <div class="badge badge-success w-100">talk type status</div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-3">
+                                        <small>location</small>
+                                        <div><span class="badge badge-light w-100">location</span></div>
+                                    </div>
+                                    <div class="col-3">
+                                        <small>years working</small>
+                                        <div><span class="badge badge-light w-100">number</span></div>
+                                    </div>
+                                    <div class="col-3">
+                                        <small>talk type</small>
+                                        <div><span class="badge badge-light w-100">talk type</span></div>
+                                    </div>
+                                    <div class="col-3">
+                                        <small>talk date</small>
+                                        <div><span class="badge badge-light w-100">date</span></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- DOC ENTRY -->
+                        <div class="col-12 col-xl-6 fb-doc-block js_loadMore">
+                            <div class="fb-doc-item mb-4">
+                                <a href="javascript:void(0)" class="div-link"></a>
+                                <div class="row">
+                                    <div class="col-12 d-flex justify-content-between">
+                                        <div class="d-flex justify-content-start align-items-center">
+                                            <div class="fb-profile">
+                                                <img src="assets/images/profile-img.jpg" alt="Name, Last Name" />
+                                            </div>
+                                            <div class="pl-2">
+                                                <div class="fb-employee-name">Ime Prezime</div>
+                                                <div class="fb-employee-data">
+                                                    <span class="fb-employee-unit">Unit</span>
+                                                    <span class="fb-employee-team">Client - team name</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="d-flex justify-content-end align-items-start">
+                                            <div class="badge badge-success w-100">talk type status</div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-3">
+                                        <small>location</small>
+                                        <div><span class="badge badge-light w-100">location</span></div>
+                                    </div>
+                                    <div class="col-3">
+                                        <small>years working</small>
+                                        <div><span class="badge badge-light w-100">number</span></div>
+                                    </div>
+                                    <div class="col-3">
+                                        <small>talk type</small>
+                                        <div><span class="badge badge-light w-100">talk type</span></div>
+                                    </div>
+                                    <div class="col-3">
+                                        <small>talk date</small>
+                                        <div><span class="badge badge-light w-100">date</span></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- DOC ENTRY -->
+                        <div class="col-12 col-xl-6 fb-doc-block js_loadMore">
+                            <div class="fb-doc-item mb-4">
+                                <a href="javascript:void(0)" class="div-link"></a>
+                                <div class="row">
+                                    <div class="col-12 d-flex justify-content-between">
+                                        <div class="d-flex justify-content-start align-items-center">
+                                            <div class="fb-profile">
+                                                <img src="assets/images/profile-img.jpg" alt="Name, Last Name" />
+                                            </div>
+                                            <div class="pl-2">
+                                                <div class="fb-employee-name">Ime Prezime</div>
+                                                <div class="fb-employee-data">
+                                                    <span class="fb-employee-unit">Unit</span>
+                                                    <span class="fb-employee-team">Client - team name</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="d-flex justify-content-end align-items-start">
+                                            <div class="badge badge-success w-100">talk type status</div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-3">
+                                        <small>location</small>
+                                        <div><span class="badge badge-light w-100">location</span></div>
+                                    </div>
+                                    <div class="col-3">
+                                        <small>years working</small>
+                                        <div><span class="badge badge-light w-100">number</span></div>
+                                    </div>
+                                    <div class="col-3">
+                                        <small>talk type</small>
+                                        <div><span class="badge badge-light w-100">talk type</span></div>
+                                    </div>
+                                    <div class="col-3">
+                                        <small>talk date</small>
+                                        <div><span class="badge badge-light w-100">date</span></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- DOC ENTRY -->
+                        <div class="col-12 col-xl-6 fb-doc-block js_loadMore">
+                            <div class="fb-doc-item mb-4">
+                                <a href="javascript:void(0)" class="div-link"></a>
+                                <div class="row">
+                                    <div class="col-12 d-flex justify-content-between">
+                                        <div class="d-flex justify-content-start align-items-center">
+                                            <div class="fb-profile">
+                                                <img src="assets/images/profile-img.jpg" alt="Name, Last Name" />
+                                            </div>
+                                            <div class="pl-2">
+                                                <div class="fb-employee-name">Ime Prezime</div>
+                                                <div class="fb-employee-data">
+                                                    <span class="fb-employee-unit">Unit</span>
+                                                    <span class="fb-employee-team">Client - team name</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="d-flex justify-content-end align-items-start">
+                                            <div class="badge badge-success w-100">talk type status</div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-3">
+                                        <small>location</small>
+                                        <div><span class="badge badge-light w-100">location</span></div>
+                                    </div>
+                                    <div class="col-3">
+                                        <small>years working</small>
+                                        <div><span class="badge badge-light w-100">number</span></div>
+                                    </div>
+                                    <div class="col-3">
+                                        <small>talk type</small>
+                                        <div><span class="badge badge-light w-100">talk type</span></div>
+                                    </div>
+                                    <div class="col-3">
+                                        <small>talk date</small>
+                                        <div><span class="badge badge-light w-100">date</span></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- DOC ENTRY -->
+                        <div class="col-12 col-xl-6 fb-doc-block js_loadMore">
+                            <div class="fb-doc-item mb-4">
+                                <a href="javascript:void(0)" class="div-link"></a>
+                                <div class="row">
+                                    <div class="col-12 d-flex justify-content-between">
+                                        <div class="d-flex justify-content-start align-items-center">
+                                            <div class="fb-profile">
+                                                <img src="assets/images/profile-img.jpg" alt="Name, Last Name" />
+                                            </div>
+                                            <div class="pl-2">
+                                                <div class="fb-employee-name">Ime Prezime</div>
+                                                <div class="fb-employee-data">
+                                                    <span class="fb-employee-unit">Unit</span>
+                                                    <span class="fb-employee-team">Client - team name</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="d-flex justify-content-end align-items-start">
+                                            <div class="badge badge-success w-100">talk type status</div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-3">
+                                        <small>location</small>
+                                        <div><span class="badge badge-light w-100">location</span></div>
+                                    </div>
+                                    <div class="col-3">
+                                        <small>years working</small>
+                                        <div><span class="badge badge-light w-100">number</span></div>
+                                    </div>
+                                    <div class="col-3">
+                                        <small>talk type</small>
+                                        <div><span class="badge badge-light w-100">talk type</span></div>
+                                    </div>
+                                    <div class="col-3">
+                                        <small>talk date</small>
+                                        <div><span class="badge badge-light w-100">date</span></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- DOC ENTRY -->
+                        <div class="col-12 col-xl-6 fb-doc-block js_loadMore">
+                            <div class="fb-doc-item mb-4">
+                                <a href="javascript:void(0)" class="div-link"></a>
+                                <div class="row">
+                                    <div class="col-12 d-flex justify-content-between">
+                                        <div class="d-flex justify-content-start align-items-center">
+                                            <div class="fb-profile">
+                                                <img src="assets/images/profile-img.jpg" alt="Name, Last Name" />
+                                            </div>
+                                            <div class="pl-2">
+                                                <div class="fb-employee-name">Ime Prezime</div>
+                                                <div class="fb-employee-data">
+                                                    <span class="fb-employee-unit">Unit</span>
+                                                    <span class="fb-employee-team">Client - team name</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="d-flex justify-content-end align-items-start">
+                                            <div class="badge badge-success w-100">talk type status</div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-3">
+                                        <small>location</small>
+                                        <div><span class="badge badge-light w-100">location</span></div>
+                                    </div>
+                                    <div class="col-3">
+                                        <small>years working</small>
+                                        <div><span class="badge badge-light w-100">number</span></div>
+                                    </div>
+                                    <div class="col-3">
+                                        <small>talk type</small>
+                                        <div><span class="badge badge-light w-100">talk type</span></div>
+                                    </div>
+                                    <div class="col-3">
+                                        <small>talk date</small>
+                                        <div><span class="badge badge-light w-100">date</span></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- DOC ENTRY -->
+                        <div class="col-12 col-xl-6 fb-doc-block js_loadMore">
+                            <div class="fb-doc-item mb-4">
+                                <a href="javascript:void(0)" class="div-link"></a>
+                                <div class="row">
+                                    <div class="col-12 d-flex justify-content-between">
+                                        <div class="d-flex justify-content-start align-items-center">
+                                            <div class="fb-profile">
+                                                <img src="assets/images/profile-img.jpg" alt="Name, Last Name" />
+                                            </div>
+                                            <div class="pl-2">
+                                                <div class="fb-employee-name">Ime Prezime</div>
+                                                <div class="fb-employee-data">
+                                                    <span class="fb-employee-unit">Unit</span>
+                                                    <span class="fb-employee-team">Client - team name</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="d-flex justify-content-end align-items-start">
+                                            <div class="badge badge-success w-100">talk type status</div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-3">
+                                        <small>location</small>
+                                        <div><span class="badge badge-light w-100">location</span></div>
+                                    </div>
+                                    <div class="col-3">
+                                        <small>years working</small>
+                                        <div><span class="badge badge-light w-100">number</span></div>
+                                    </div>
+                                    <div class="col-3">
+                                        <small>talk type</small>
+                                        <div><span class="badge badge-light w-100">talk type</span></div>
+                                    </div>
+                                    <div class="col-3">
+                                        <small>talk date</small>
+                                        <div><span class="badge badge-light w-100">date</span></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- DOC ENTRY -->
+                        <div class="col-12 col-xl-6 fb-doc-block js_loadMore">
+                            <div class="fb-doc-item mb-4">
+                                <a href="javascript:void(0)" class="div-link"></a>
+                                <div class="row">
+                                    <div class="col-12 d-flex justify-content-between">
+                                        <div class="d-flex justify-content-start align-items-center">
+                                            <div class="fb-profile">
+                                                <img src="assets/images/profile-img.jpg" alt="Name, Last Name" />
+                                            </div>
+                                            <div class="pl-2">
+                                                <div class="fb-employee-name">Ime Prezime</div>
+                                                <div class="fb-employee-data">
+                                                    <span class="fb-employee-unit">Unit</span>
+                                                    <span class="fb-employee-team">Client - team name</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="d-flex justify-content-end align-items-start">
+                                            <div class="badge badge-success w-100">talk type status</div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-3">
+                                        <small>location</small>
+                                        <div><span class="badge badge-light w-100">location</span></div>
+                                    </div>
+                                    <div class="col-3">
+                                        <small>years working</small>
+                                        <div><span class="badge badge-light w-100">number</span></div>
+                                    </div>
+                                    <div class="col-3">
+                                        <small>talk type</small>
+                                        <div><span class="badge badge-light w-100">talk type</span></div>
+                                    </div>
+                                    <div class="col-3">
+                                        <small>talk date</small>
+                                        <div><span class="badge badge-light w-100">date</span></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- DOC ENTRY -->
+                        <div class="col-12 col-xl-6 fb-doc-block js_loadMore">
+                            <div class="fb-doc-item mb-4">
+                                <a href="javascript:void(0)" class="div-link"></a>
+                                <div class="row">
+                                    <div class="col-12 d-flex justify-content-between">
+                                        <div class="d-flex justify-content-start align-items-center">
+                                            <div class="fb-profile">
+                                                <img src="assets/images/profile-img.jpg" alt="Name, Last Name" />
+                                            </div>
+                                            <div class="pl-2">
+                                                <div class="fb-employee-name">Ime Prezime</div>
+                                                <div class="fb-employee-data">
+                                                    <span class="fb-employee-unit">Unit</span>
+                                                    <span class="fb-employee-team">Client - team name</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="d-flex justify-content-end align-items-start">
+                                            <div class="badge badge-success w-100">talk type status</div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-3">
+                                        <small>location</small>
+                                        <div><span class="badge badge-light w-100">location</span></div>
+                                    </div>
+                                    <div class="col-3">
+                                        <small>years working</small>
+                                        <div><span class="badge badge-light w-100">number</span></div>
+                                    </div>
+                                    <div class="col-3">
+                                        <small>talk type</small>
+                                        <div><span class="badge badge-light w-100">talk type</span></div>
+                                    </div>
+                                    <div class="col-3">
+                                        <small>talk date</small>
+                                        <div><span class="badge badge-light w-100">date</span></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- DOC ENTRY -->
+                        <div class="col-12 col-xl-6 fb-doc-block js_loadMore">
+                            <div class="fb-doc-item mb-4">
+                                <a href="javascript:void(0)" class="div-link"></a>
+                                <div class="row">
+                                    <div class="col-12 d-flex justify-content-between">
+                                        <div class="d-flex justify-content-start align-items-center">
+                                            <div class="fb-profile">
+                                                <img src="assets/images/profile-img.jpg" alt="Name, Last Name" />
+                                            </div>
+                                            <div class="pl-2">
+                                                <div class="fb-employee-name">Ime Prezime</div>
+                                                <div class="fb-employee-data">
+                                                    <span class="fb-employee-unit">Unit</span>
+                                                    <span class="fb-employee-team">Client - team name</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="d-flex justify-content-end align-items-start">
+                                            <div class="badge badge-success w-100">talk type status</div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-3">
+                                        <small>location</small>
+                                        <div><span class="badge badge-light w-100">location</span></div>
+                                    </div>
+                                    <div class="col-3">
+                                        <small>years working</small>
+                                        <div><span class="badge badge-light w-100">number</span></div>
+                                    </div>
+                                    <div class="col-3">
+                                        <small>talk type</small>
+                                        <div><span class="badge badge-light w-100">talk type</span></div>
+                                    </div>
+                                    <div class="col-3">
+                                        <small>talk date</small>
+                                        <div><span class="badge badge-light w-100">date</span></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- DOC ENTRY -->
+                        <div class="col-12 col-xl-6 fb-doc-block js_loadMore">
+                            <div class="fb-doc-item mb-4">
+                                <a href="javascript:void(0)" class="div-link"></a>
+                                <div class="row">
+                                    <div class="col-12 d-flex justify-content-between">
+                                        <div class="d-flex justify-content-start align-items-center">
+                                            <div class="fb-profile">
+                                                <img src="assets/images/profile-img.jpg" alt="Name, Last Name" />
+                                            </div>
+                                            <div class="pl-2">
+                                                <div class="fb-employee-name">Ime Prezime</div>
+                                                <div class="fb-employee-data">
+                                                    <span class="fb-employee-unit">Unit</span>
+                                                    <span class="fb-employee-team">Client - team name</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="d-flex justify-content-end align-items-start">
+                                            <div class="badge badge-success w-100">talk type status</div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-3">
+                                        <small>location</small>
+                                        <div><span class="badge badge-light w-100">location</span></div>
+                                    </div>
+                                    <div class="col-3">
+                                        <small>years working</small>
+                                        <div><span class="badge badge-light w-100">number</span></div>
+                                    </div>
+                                    <div class="col-3">
+                                        <small>talk type</small>
+                                        <div><span class="badge badge-light w-100">talk type</span></div>
+                                    </div>
+                                    <div class="col-3">
+                                        <small>talk date</small>
+                                        <div><span class="badge badge-light w-100">date</span></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- DOC ENTRY -->
+                        <div class="col-12 col-xl-6 fb-doc-block js_loadMore">
+                            <div class="fb-doc-item mb-4">
+                                <a href="javascript:void(0)" class="div-link"></a>
+                                <div class="row">
+                                    <div class="col-12 d-flex justify-content-between">
+                                        <div class="d-flex justify-content-start align-items-center">
+                                            <div class="fb-profile">
+                                                <img src="assets/images/profile-img.jpg" alt="Name, Last Name" />
+                                            </div>
+                                            <div class="pl-2">
+                                                <div class="fb-employee-name">Ime Prezime</div>
+                                                <div class="fb-employee-data">
+                                                    <span class="fb-employee-unit">Unit</span>
+                                                    <span class="fb-employee-team">Client - team name</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="d-flex justify-content-end align-items-start">
+                                            <div class="badge badge-success w-100">talk type status</div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-3">
+                                        <small>location</small>
+                                        <div><span class="badge badge-light w-100">location</span></div>
+                                    </div>
+                                    <div class="col-3">
+                                        <small>years working</small>
+                                        <div><span class="badge badge-light w-100">number</span></div>
+                                    </div>
+                                    <div class="col-3">
+                                        <small>talk type</small>
+                                        <div><span class="badge badge-light w-100">talk type</span></div>
+                                    </div>
+                                    <div class="col-3">
+                                        <small>talk date</small>
+                                        <div><span class="badge badge-light w-100">date</span></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- DOC ENTRY -->
+                        <div class="col-12 col-xl-6 fb-doc-block js_loadMore">
+                            <div class="fb-doc-item mb-4">
+                                <a href="javascript:void(0)" class="div-link"></a>
+                                <div class="row">
+                                    <div class="col-12 d-flex justify-content-between">
+                                        <div class="d-flex justify-content-start align-items-center">
+                                            <div class="fb-profile">
+                                                <img src="assets/images/profile-img.jpg" alt="Name, Last Name" />
+                                            </div>
+                                            <div class="pl-2">
+                                                <div class="fb-employee-name">Ime Prezime</div>
+                                                <div class="fb-employee-data">
+                                                    <span class="fb-employee-unit">Unit</span>
+                                                    <span class="fb-employee-team">Client - team name</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="d-flex justify-content-end align-items-start">
+                                            <div class="badge badge-success w-100">talk type status</div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-3">
+                                        <small>location</small>
+                                        <div><span class="badge badge-light w-100">location</span></div>
+                                    </div>
+                                    <div class="col-3">
+                                        <small>years working</small>
+                                        <div><span class="badge badge-light w-100">number</span></div>
+                                    </div>
+                                    <div class="col-3">
+                                        <small>talk type</small>
+                                        <div><span class="badge badge-light w-100">talk type</span></div>
+                                    </div>
+                                    <div class="col-3">
+                                        <small>talk date</small>
+                                        <div><span class="badge badge-light w-100">date</span></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- DOC ENTRY -->
+                        <div class="col-12 col-xl-6 fb-doc-block js_loadMore">
+                            <div class="fb-doc-item mb-4">
+                                <a href="javascript:void(0)" class="div-link"></a>
+                                <div class="row">
+                                    <div class="col-12 d-flex justify-content-between">
+                                        <div class="d-flex justify-content-start align-items-center">
+                                            <div class="fb-profile">
+                                                <img src="assets/images/profile-img.jpg" alt="Name, Last Name" />
+                                            </div>
+                                            <div class="pl-2">
+                                                <div class="fb-employee-name">Ime Prezime</div>
+                                                <div class="fb-employee-data">
+                                                    <span class="fb-employee-unit">Unit</span>
+                                                    <span class="fb-employee-team">Client - team name</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="d-flex justify-content-end align-items-start">
+                                            <div class="badge badge-success w-100">talk type status</div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-3">
+                                        <small>location</small>
+                                        <div><span class="badge badge-light w-100">location</span></div>
+                                    </div>
+                                    <div class="col-3">
+                                        <small>years working</small>
+                                        <div><span class="badge badge-light w-100">number</span></div>
+                                    </div>
+                                    <div class="col-3">
+                                        <small>talk type</small>
+                                        <div><span class="badge badge-light w-100">talk type</span></div>
+                                    </div>
+                                    <div class="col-3">
+                                        <small>talk date</small>
+                                        <div><span class="badge badge-light w-100">date</span></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- DOC ENTRY -->
+                        <div class="col-12 col-xl-6 fb-doc-block js_loadMore">
+                            <div class="fb-doc-item mb-4">
+                                <a href="javascript:void(0)" class="div-link"></a>
+                                <div class="row">
+                                    <div class="col-12 d-flex justify-content-between">
+                                        <div class="d-flex justify-content-start align-items-center">
+                                            <div class="fb-profile">
+                                                <img src="assets/images/profile-img.jpg" alt="Name, Last Name" />
+                                            </div>
+                                            <div class="pl-2">
+                                                <div class="fb-employee-name">Ime Prezime</div>
+                                                <div class="fb-employee-data">
+                                                    <span class="fb-employee-unit">Unit</span>
+                                                    <span class="fb-employee-team">Client - team name</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="d-flex justify-content-end align-items-start">
+                                            <div class="badge badge-success w-100">talk type status</div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-3">
+                                        <small>location</small>
+                                        <div><span class="badge badge-light w-100">location</span></div>
+                                    </div>
+                                    <div class="col-3">
+                                        <small>years working</small>
+                                        <div><span class="badge badge-light w-100">number</span></div>
+                                    </div>
+                                    <div class="col-3">
+                                        <small>talk type</small>
+                                        <div><span class="badge badge-light w-100">talk type</span></div>
+                                    </div>
+                                    <div class="col-3">
+                                        <small>talk date</small>
+                                        <div><span class="badge badge-light w-100">date</span></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-12 d-flex justify-content-center py-4">
+                            <button id="load-more" class="confirm">load more</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- FILTER RESULTS -->
+            <div class="col-12 col-md-8 mt-5 js_uiHelperPanel" id="filter-results" style="display:none">
+                <div class="panel-general">
+                    <span class="fb-panel-title mb-3">RESULTS</span>
                     <div class="row">
                         <!-- DOC ENTRY -->
                         <div class="col-12 col-xl-6 fb-doc-block">
@@ -359,7 +1763,7 @@
                                             </div>
                                         </div>
                                         <div class="d-flex justify-content-end align-items-start">
-                                            <div class="badge badge-success w-100">done</div>
+                                            <div class="badge badge-danger w-100">follow-up open</div>
                                         </div>
                                     </div>
                                 </div>
@@ -374,11 +1778,11 @@
                                     </div>
                                     <div class="col-3">
                                         <small>talk type</small>
-                                        <div><span class="badge badge-light w-100">Yearly</span></div>
+                                        <div><span class="badge badge-light w-100">PAT 2020</span></div>
                                     </div>
                                     <div class="col-3">
                                         <small>talk date</small>
-                                        <div><span class="badge badge-light w-100">15.08.2020</span></div>
+                                        <div><span class="badge badge-light w-100">15.12.2020</span></div>
                                     </div>
                                 </div>
                             </div>
@@ -402,7 +1806,7 @@
                                             </div>
                                         </div>
                                         <div class="d-flex justify-content-end align-items-start">
-                                            <div class="badge badge-success w-100">follow-up done</div>
+                                            <div class="badge badge-danger w-100">follow-up open</div>
                                         </div>
                                     </div>
                                 </div>
@@ -488,7 +1892,7 @@
                                             </div>
                                         </div>
                                         <div class="d-flex justify-content-end align-items-start">
-                                            <div class="badge badge-success w-100">talk type status</div>
+                                            <div class="badge badge-danger w-100">follow-up open</div>
                                         </div>
                                     </div>
                                 </div>
@@ -512,1169 +1916,21 @@
                                 </div>
                             </div>
                         </div>
-                        <!-- DOC ENTRY -->
-                        <div class="col-12 col-xl-6 fb-doc-block">
-                            <div class="fb-doc-item mb-4">
-                                <a href="javascript:void(0)" class="div-link"></a>
-                                <div class="row">
-                                    <div class="col-12 d-flex justify-content-between">
-                                        <div class="d-flex justify-content-start align-items-center">
-                                            <div class="fb-profile">
-                                                <img src="assets/images/profile-img.jpg" alt="Name, Last Name" />
-                                            </div>
-                                            <div class="pl-2">
-                                                <div class="fb-employee-name">Ime Prezime</div>
-                                                <div class="fb-employee-data">
-                                                    <span class="fb-employee-unit">Unit</span>
-                                                    <span class="fb-employee-team">Client - team name</span>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="d-flex justify-content-end align-items-start">
-                                            <div class="badge badge-success w-100">talk type status</div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col-3">
-                                        <small>location</small>
-                                        <div><span class="badge badge-light w-100">location</span></div>
-                                    </div>
-                                    <div class="col-3">
-                                        <small>years working</small>
-                                        <div><span class="badge badge-light w-100">number</span></div>
-                                    </div>
-                                    <div class="col-3">
-                                        <small>talk type</small>
-                                        <div><span class="badge badge-light w-100">talk type</span></div>
-                                    </div>
-                                    <div class="col-3">
-                                        <small>talk date</small>
-                                        <div><span class="badge badge-light w-100">date</span></div>
-                                    </div>
-                                </div>
+                        
+                    </div>
+                </div>
+            </div>
+
+            <!-- FILTER NO RESULTS -->
+            <div class="col-12 col-md-8 mt-5 js_uiHelperPanel" id="filter-no-results" style="display:none">
+                <div class="panel-general">
+                    <span class="fb-panel-title mb-3">RESULTS</span>
+                    <div class="row">
+                        <div class="no-results-message justify-content-center align-items-center w-100" style="display: block;">
+                            <div class="no-results h-100 p-5 text-center">
+                                <h4>No Results Match your Selection Criteria</h4>
+                                <p>Please modify your selection</p>
                             </div>
-                        </div>
-                        <!-- DOC ENTRY -->
-                        <div class="col-12 col-xl-6 fb-doc-block">
-                            <div class="fb-doc-item mb-4">
-                                <a href="javascript:void(0)" class="div-link"></a>
-                                <div class="row">
-                                    <div class="col-12 d-flex justify-content-between">
-                                        <div class="d-flex justify-content-start align-items-center">
-                                            <div class="fb-profile">
-                                                <img src="assets/images/profile-img.jpg" alt="Name, Last Name" />
-                                            </div>
-                                            <div class="pl-2">
-                                                <div class="fb-employee-name">Ime Prezime</div>
-                                                <div class="fb-employee-data">
-                                                    <span class="fb-employee-unit">Unit</span>
-                                                    <span class="fb-employee-team">Client - team name</span>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="d-flex justify-content-end align-items-start">
-                                            <div class="badge badge-success w-100">talk type status</div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col-3">
-                                        <small>location</small>
-                                        <div><span class="badge badge-light w-100">location</span></div>
-                                    </div>
-                                    <div class="col-3">
-                                        <small>years working</small>
-                                        <div><span class="badge badge-light w-100">number</span></div>
-                                    </div>
-                                    <div class="col-3">
-                                        <small>talk type</small>
-                                        <div><span class="badge badge-light w-100">talk type</span></div>
-                                    </div>
-                                    <div class="col-3">
-                                        <small>talk date</small>
-                                        <div><span class="badge badge-light w-100">date</span></div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- DOC ENTRY -->
-                        <div class="col-12 col-xl-6 fb-doc-block">
-                            <div class="fb-doc-item mb-4">
-                                <a href="javascript:void(0)" class="div-link"></a>
-                                <div class="row">
-                                    <div class="col-12 d-flex justify-content-between">
-                                        <div class="d-flex justify-content-start align-items-center">
-                                            <div class="fb-profile">
-                                                <img src="assets/images/profile-img.jpg" alt="Name, Last Name" />
-                                            </div>
-                                            <div class="pl-2">
-                                                <div class="fb-employee-name">Ime Prezime</div>
-                                                <div class="fb-employee-data">
-                                                    <span class="fb-employee-unit">Unit</span>
-                                                    <span class="fb-employee-team">Client - team name</span>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="d-flex justify-content-end align-items-start">
-                                            <div class="badge badge-success w-100">talk type status</div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col-3">
-                                        <small>location</small>
-                                        <div><span class="badge badge-light w-100">location</span></div>
-                                    </div>
-                                    <div class="col-3">
-                                        <small>years working</small>
-                                        <div><span class="badge badge-light w-100">number</span></div>
-                                    </div>
-                                    <div class="col-3">
-                                        <small>talk type</small>
-                                        <div><span class="badge badge-light w-100">talk type</span></div>
-                                    </div>
-                                    <div class="col-3">
-                                        <small>talk date</small>
-                                        <div><span class="badge badge-light w-100">date</span></div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- DOC ENTRY -->
-                        <div class="col-12 col-xl-6 fb-doc-block">
-                            <div class="fb-doc-item mb-4">
-                                <a href="javascript:void(0)" class="div-link"></a>
-                                <div class="row">
-                                    <div class="col-12 d-flex justify-content-between">
-                                        <div class="d-flex justify-content-start align-items-center">
-                                            <div class="fb-profile">
-                                                <img src="assets/images/profile-img.jpg" alt="Name, Last Name" />
-                                            </div>
-                                            <div class="pl-2">
-                                                <div class="fb-employee-name">Ime Prezime</div>
-                                                <div class="fb-employee-data">
-                                                    <span class="fb-employee-unit">Unit</span>
-                                                    <span class="fb-employee-team">Client - team name</span>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="d-flex justify-content-end align-items-start">
-                                            <div class="badge badge-success w-100">talk type status</div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col-3">
-                                        <small>location</small>
-                                        <div><span class="badge badge-light w-100">location</span></div>
-                                    </div>
-                                    <div class="col-3">
-                                        <small>years working</small>
-                                        <div><span class="badge badge-light w-100">number</span></div>
-                                    </div>
-                                    <div class="col-3">
-                                        <small>talk type</small>
-                                        <div><span class="badge badge-light w-100">talk type</span></div>
-                                    </div>
-                                    <div class="col-3">
-                                        <small>talk date</small>
-                                        <div><span class="badge badge-light w-100">date</span></div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- DOC ENTRY -->
-                        <div class="col-12 col-xl-6 fb-doc-block">
-                            <div class="fb-doc-item mb-4">
-                                <a href="javascript:void(0)" class="div-link"></a>
-                                <div class="row">
-                                    <div class="col-12 d-flex justify-content-between">
-                                        <div class="d-flex justify-content-start align-items-center">
-                                            <div class="fb-profile">
-                                                <img src="assets/images/profile-img.jpg" alt="Name, Last Name" />
-                                            </div>
-                                            <div class="pl-2">
-                                                <div class="fb-employee-name">Ime Prezime</div>
-                                                <div class="fb-employee-data">
-                                                    <span class="fb-employee-unit">Unit</span>
-                                                    <span class="fb-employee-team">Client - team name</span>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="d-flex justify-content-end align-items-start">
-                                            <div class="badge badge-success w-100">talk type status</div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col-3">
-                                        <small>location</small>
-                                        <div><span class="badge badge-light w-100">location</span></div>
-                                    </div>
-                                    <div class="col-3">
-                                        <small>years working</small>
-                                        <div><span class="badge badge-light w-100">number</span></div>
-                                    </div>
-                                    <div class="col-3">
-                                        <small>talk type</small>
-                                        <div><span class="badge badge-light w-100">talk type</span></div>
-                                    </div>
-                                    <div class="col-3">
-                                        <small>talk date</small>
-                                        <div><span class="badge badge-light w-100">date</span></div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- DOC ENTRY -->
-                        <div class="col-12 col-xl-6 fb-doc-block">
-                            <div class="fb-doc-item mb-4">
-                                <a href="javascript:void(0)" class="div-link"></a>
-                                <div class="row">
-                                    <div class="col-12 d-flex justify-content-between">
-                                        <div class="d-flex justify-content-start align-items-center">
-                                            <div class="fb-profile">
-                                                <img src="assets/images/profile-img.jpg" alt="Name, Last Name" />
-                                            </div>
-                                            <div class="pl-2">
-                                                <div class="fb-employee-name">Ime Prezime</div>
-                                                <div class="fb-employee-data">
-                                                    <span class="fb-employee-unit">Unit</span>
-                                                    <span class="fb-employee-team">Client - team name</span>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="d-flex justify-content-end align-items-start">
-                                            <div class="badge badge-success w-100">talk type status</div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col-3">
-                                        <small>location</small>
-                                        <div><span class="badge badge-light w-100">location</span></div>
-                                    </div>
-                                    <div class="col-3">
-                                        <small>years working</small>
-                                        <div><span class="badge badge-light w-100">number</span></div>
-                                    </div>
-                                    <div class="col-3">
-                                        <small>talk type</small>
-                                        <div><span class="badge badge-light w-100">talk type</span></div>
-                                    </div>
-                                    <div class="col-3">
-                                        <small>talk date</small>
-                                        <div><span class="badge badge-light w-100">date</span></div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- DOC ENTRY -->
-                        <div class="col-12 col-xl-6 fb-doc-block">
-                            <div class="fb-doc-item mb-4">
-                                <a href="javascript:void(0)" class="div-link"></a>
-                                <div class="row">
-                                    <div class="col-12 d-flex justify-content-between">
-                                        <div class="d-flex justify-content-start align-items-center">
-                                            <div class="fb-profile">
-                                                <img src="assets/images/profile-img.jpg" alt="Name, Last Name" />
-                                            </div>
-                                            <div class="pl-2">
-                                                <div class="fb-employee-name">Ime Prezime</div>
-                                                <div class="fb-employee-data">
-                                                    <span class="fb-employee-unit">Unit</span>
-                                                    <span class="fb-employee-team">Client - team name</span>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="d-flex justify-content-end align-items-start">
-                                            <div class="badge badge-success w-100">talk type status</div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col-3">
-                                        <small>location</small>
-                                        <div><span class="badge badge-light w-100">location</span></div>
-                                    </div>
-                                    <div class="col-3">
-                                        <small>years working</small>
-                                        <div><span class="badge badge-light w-100">number</span></div>
-                                    </div>
-                                    <div class="col-3">
-                                        <small>talk type</small>
-                                        <div><span class="badge badge-light w-100">talk type</span></div>
-                                    </div>
-                                    <div class="col-3">
-                                        <small>talk date</small>
-                                        <div><span class="badge badge-light w-100">date</span></div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- DOC ENTRY -->
-                        <div class="col-12 col-xl-6 fb-doc-block">
-                            <div class="fb-doc-item mb-4">
-                                <a href="javascript:void(0)" class="div-link"></a>
-                                <div class="row">
-                                    <div class="col-12 d-flex justify-content-between">
-                                        <div class="d-flex justify-content-start align-items-center">
-                                            <div class="fb-profile">
-                                                <img src="assets/images/profile-img.jpg" alt="Name, Last Name" />
-                                            </div>
-                                            <div class="pl-2">
-                                                <div class="fb-employee-name">Ime Prezime</div>
-                                                <div class="fb-employee-data">
-                                                    <span class="fb-employee-unit">Unit</span>
-                                                    <span class="fb-employee-team">Client - team name</span>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="d-flex justify-content-end align-items-start">
-                                            <div class="badge badge-success w-100">talk type status</div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col-3">
-                                        <small>location</small>
-                                        <div><span class="badge badge-light w-100">location</span></div>
-                                    </div>
-                                    <div class="col-3">
-                                        <small>years working</small>
-                                        <div><span class="badge badge-light w-100">number</span></div>
-                                    </div>
-                                    <div class="col-3">
-                                        <small>talk type</small>
-                                        <div><span class="badge badge-light w-100">talk type</span></div>
-                                    </div>
-                                    <div class="col-3">
-                                        <small>talk date</small>
-                                        <div><span class="badge badge-light w-100">date</span></div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- DOC ENTRY -->
-                        <div class="col-12 col-xl-6 fb-doc-block">
-                            <div class="fb-doc-item mb-4">
-                                <a href="javascript:void(0)" class="div-link"></a>
-                                <div class="row">
-                                    <div class="col-12 d-flex justify-content-between">
-                                        <div class="d-flex justify-content-start align-items-center">
-                                            <div class="fb-profile">
-                                                <img src="assets/images/profile-img.jpg" alt="Name, Last Name" />
-                                            </div>
-                                            <div class="pl-2">
-                                                <div class="fb-employee-name">Ime Prezime</div>
-                                                <div class="fb-employee-data">
-                                                    <span class="fb-employee-unit">Unit</span>
-                                                    <span class="fb-employee-team">Client - team name</span>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="d-flex justify-content-end align-items-start">
-                                            <div class="badge badge-success w-100">talk type status</div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col-3">
-                                        <small>location</small>
-                                        <div><span class="badge badge-light w-100">location</span></div>
-                                    </div>
-                                    <div class="col-3">
-                                        <small>years working</small>
-                                        <div><span class="badge badge-light w-100">number</span></div>
-                                    </div>
-                                    <div class="col-3">
-                                        <small>talk type</small>
-                                        <div><span class="badge badge-light w-100">talk type</span></div>
-                                    </div>
-                                    <div class="col-3">
-                                        <small>talk date</small>
-                                        <div><span class="badge badge-light w-100">date</span></div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- DOC ENTRY -->
-                        <div class="col-12 col-xl-6 fb-doc-block">
-                            <div class="fb-doc-item mb-4">
-                                <a href="javascript:void(0)" class="div-link"></a>
-                                <div class="row">
-                                    <div class="col-12 d-flex justify-content-between">
-                                        <div class="d-flex justify-content-start align-items-center">
-                                            <div class="fb-profile">
-                                                <img src="assets/images/profile-img.jpg" alt="Name, Last Name" />
-                                            </div>
-                                            <div class="pl-2">
-                                                <div class="fb-employee-name">Ime Prezime</div>
-                                                <div class="fb-employee-data">
-                                                    <span class="fb-employee-unit">Unit</span>
-                                                    <span class="fb-employee-team">Client - team name</span>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="d-flex justify-content-end align-items-start">
-                                            <div class="badge badge-success w-100">talk type status</div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col-3">
-                                        <small>location</small>
-                                        <div><span class="badge badge-light w-100">location</span></div>
-                                    </div>
-                                    <div class="col-3">
-                                        <small>years working</small>
-                                        <div><span class="badge badge-light w-100">number</span></div>
-                                    </div>
-                                    <div class="col-3">
-                                        <small>talk type</small>
-                                        <div><span class="badge badge-light w-100">talk type</span></div>
-                                    </div>
-                                    <div class="col-3">
-                                        <small>talk date</small>
-                                        <div><span class="badge badge-light w-100">date</span></div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- DOC ENTRY -->
-                        <div class="col-12 col-xl-6 fb-doc-block">
-                            <div class="fb-doc-item mb-4">
-                                <a href="javascript:void(0)" class="div-link"></a>
-                                <div class="row">
-                                    <div class="col-12 d-flex justify-content-between">
-                                        <div class="d-flex justify-content-start align-items-center">
-                                            <div class="fb-profile">
-                                                <img src="assets/images/profile-img.jpg" alt="Name, Last Name" />
-                                            </div>
-                                            <div class="pl-2">
-                                                <div class="fb-employee-name">Ime Prezime</div>
-                                                <div class="fb-employee-data">
-                                                    <span class="fb-employee-unit">Unit</span>
-                                                    <span class="fb-employee-team">Client - team name</span>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="d-flex justify-content-end align-items-start">
-                                            <div class="badge badge-success w-100">talk type status</div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col-3">
-                                        <small>location</small>
-                                        <div><span class="badge badge-light w-100">location</span></div>
-                                    </div>
-                                    <div class="col-3">
-                                        <small>years working</small>
-                                        <div><span class="badge badge-light w-100">number</span></div>
-                                    </div>
-                                    <div class="col-3">
-                                        <small>talk type</small>
-                                        <div><span class="badge badge-light w-100">talk type</span></div>
-                                    </div>
-                                    <div class="col-3">
-                                        <small>talk date</small>
-                                        <div><span class="badge badge-light w-100">date</span></div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- DOC ENTRY -->
-                        <div class="col-12 col-xl-6 fb-doc-block">
-                            <div class="fb-doc-item mb-4">
-                                <a href="javascript:void(0)" class="div-link"></a>
-                                <div class="row">
-                                    <div class="col-12 d-flex justify-content-between">
-                                        <div class="d-flex justify-content-start align-items-center">
-                                            <div class="fb-profile">
-                                                <img src="assets/images/profile-img.jpg" alt="Name, Last Name" />
-                                            </div>
-                                            <div class="pl-2">
-                                                <div class="fb-employee-name">Ime Prezime</div>
-                                                <div class="fb-employee-data">
-                                                    <span class="fb-employee-unit">Unit</span>
-                                                    <span class="fb-employee-team">Client - team name</span>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="d-flex justify-content-end align-items-start">
-                                            <div class="badge badge-success w-100">talk type status</div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col-3">
-                                        <small>location</small>
-                                        <div><span class="badge badge-light w-100">location</span></div>
-                                    </div>
-                                    <div class="col-3">
-                                        <small>years working</small>
-                                        <div><span class="badge badge-light w-100">number</span></div>
-                                    </div>
-                                    <div class="col-3">
-                                        <small>talk type</small>
-                                        <div><span class="badge badge-light w-100">talk type</span></div>
-                                    </div>
-                                    <div class="col-3">
-                                        <small>talk date</small>
-                                        <div><span class="badge badge-light w-100">date</span></div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- DOC ENTRY -->
-                        <div class="col-12 col-xl-6 fb-doc-block">
-                            <div class="fb-doc-item mb-4">
-                                <a href="javascript:void(0)" class="div-link"></a>
-                                <div class="row">
-                                    <div class="col-12 d-flex justify-content-between">
-                                        <div class="d-flex justify-content-start align-items-center">
-                                            <div class="fb-profile">
-                                                <img src="assets/images/profile-img.jpg" alt="Name, Last Name" />
-                                            </div>
-                                            <div class="pl-2">
-                                                <div class="fb-employee-name">Ime Prezime</div>
-                                                <div class="fb-employee-data">
-                                                    <span class="fb-employee-unit">Unit</span>
-                                                    <span class="fb-employee-team">Client - team name</span>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="d-flex justify-content-end align-items-start">
-                                            <div class="badge badge-success w-100">talk type status</div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col-3">
-                                        <small>location</small>
-                                        <div><span class="badge badge-light w-100">location</span></div>
-                                    </div>
-                                    <div class="col-3">
-                                        <small>years working</small>
-                                        <div><span class="badge badge-light w-100">number</span></div>
-                                    </div>
-                                    <div class="col-3">
-                                        <small>talk type</small>
-                                        <div><span class="badge badge-light w-100">talk type</span></div>
-                                    </div>
-                                    <div class="col-3">
-                                        <small>talk date</small>
-                                        <div><span class="badge badge-light w-100">date</span></div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- DOC ENTRY -->
-                        <div class="col-12 col-xl-6 fb-doc-block">
-                            <div class="fb-doc-item mb-4">
-                                <a href="javascript:void(0)" class="div-link"></a>
-                                <div class="row">
-                                    <div class="col-12 d-flex justify-content-between">
-                                        <div class="d-flex justify-content-start align-items-center">
-                                            <div class="fb-profile">
-                                                <img src="assets/images/profile-img.jpg" alt="Name, Last Name" />
-                                            </div>
-                                            <div class="pl-2">
-                                                <div class="fb-employee-name">Ime Prezime</div>
-                                                <div class="fb-employee-data">
-                                                    <span class="fb-employee-unit">Unit</span>
-                                                    <span class="fb-employee-team">Client - team name</span>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="d-flex justify-content-end align-items-start">
-                                            <div class="badge badge-success w-100">talk type status</div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col-3">
-                                        <small>location</small>
-                                        <div><span class="badge badge-light w-100">location</span></div>
-                                    </div>
-                                    <div class="col-3">
-                                        <small>years working</small>
-                                        <div><span class="badge badge-light w-100">number</span></div>
-                                    </div>
-                                    <div class="col-3">
-                                        <small>talk type</small>
-                                        <div><span class="badge badge-light w-100">talk type</span></div>
-                                    </div>
-                                    <div class="col-3">
-                                        <small>talk date</small>
-                                        <div><span class="badge badge-light w-100">date</span></div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- DOC ENTRY -->
-                        <div class="col-12 col-xl-6 fb-doc-block">
-                            <div class="fb-doc-item mb-4">
-                                <a href="javascript:void(0)" class="div-link"></a>
-                                <div class="row">
-                                    <div class="col-12 d-flex justify-content-between">
-                                        <div class="d-flex justify-content-start align-items-center">
-                                            <div class="fb-profile">
-                                                <img src="assets/images/profile-img.jpg" alt="Name, Last Name" />
-                                            </div>
-                                            <div class="pl-2">
-                                                <div class="fb-employee-name">Ime Prezime</div>
-                                                <div class="fb-employee-data">
-                                                    <span class="fb-employee-unit">Unit</span>
-                                                    <span class="fb-employee-team">Client - team name</span>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="d-flex justify-content-end align-items-start">
-                                            <div class="badge badge-success w-100">talk type status</div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col-3">
-                                        <small>location</small>
-                                        <div><span class="badge badge-light w-100">location</span></div>
-                                    </div>
-                                    <div class="col-3">
-                                        <small>years working</small>
-                                        <div><span class="badge badge-light w-100">number</span></div>
-                                    </div>
-                                    <div class="col-3">
-                                        <small>talk type</small>
-                                        <div><span class="badge badge-light w-100">talk type</span></div>
-                                    </div>
-                                    <div class="col-3">
-                                        <small>talk date</small>
-                                        <div><span class="badge badge-light w-100">date</span></div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- DOC ENTRY -->
-                        <div class="col-12 col-xl-6 fb-doc-block">
-                            <div class="fb-doc-item mb-4">
-                                <a href="javascript:void(0)" class="div-link"></a>
-                                <div class="row">
-                                    <div class="col-12 d-flex justify-content-between">
-                                        <div class="d-flex justify-content-start align-items-center">
-                                            <div class="fb-profile">
-                                                <img src="assets/images/profile-img.jpg" alt="Name, Last Name" />
-                                            </div>
-                                            <div class="pl-2">
-                                                <div class="fb-employee-name">Ime Prezime</div>
-                                                <div class="fb-employee-data">
-                                                    <span class="fb-employee-unit">Unit</span>
-                                                    <span class="fb-employee-team">Client - team name</span>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="d-flex justify-content-end align-items-start">
-                                            <div class="badge badge-success w-100">talk type status</div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col-3">
-                                        <small>location</small>
-                                        <div><span class="badge badge-light w-100">location</span></div>
-                                    </div>
-                                    <div class="col-3">
-                                        <small>years working</small>
-                                        <div><span class="badge badge-light w-100">number</span></div>
-                                    </div>
-                                    <div class="col-3">
-                                        <small>talk type</small>
-                                        <div><span class="badge badge-light w-100">talk type</span></div>
-                                    </div>
-                                    <div class="col-3">
-                                        <small>talk date</small>
-                                        <div><span class="badge badge-light w-100">date</span></div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- DOC ENTRY -->
-                        <div class="col-12 col-xl-6 fb-doc-block">
-                            <div class="fb-doc-item mb-4">
-                                <a href="javascript:void(0)" class="div-link"></a>
-                                <div class="row">
-                                    <div class="col-12 d-flex justify-content-between">
-                                        <div class="d-flex justify-content-start align-items-center">
-                                            <div class="fb-profile">
-                                                <img src="assets/images/profile-img.jpg" alt="Name, Last Name" />
-                                            </div>
-                                            <div class="pl-2">
-                                                <div class="fb-employee-name">Ime Prezime</div>
-                                                <div class="fb-employee-data">
-                                                    <span class="fb-employee-unit">Unit</span>
-                                                    <span class="fb-employee-team">Client - team name</span>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="d-flex justify-content-end align-items-start">
-                                            <div class="badge badge-success w-100">talk type status</div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col-3">
-                                        <small>location</small>
-                                        <div><span class="badge badge-light w-100">location</span></div>
-                                    </div>
-                                    <div class="col-3">
-                                        <small>years working</small>
-                                        <div><span class="badge badge-light w-100">number</span></div>
-                                    </div>
-                                    <div class="col-3">
-                                        <small>talk type</small>
-                                        <div><span class="badge badge-light w-100">talk type</span></div>
-                                    </div>
-                                    <div class="col-3">
-                                        <small>talk date</small>
-                                        <div><span class="badge badge-light w-100">date</span></div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- DOC ENTRY -->
-                        <div class="col-12 col-xl-6 fb-doc-block">
-                            <div class="fb-doc-item mb-4">
-                                <a href="javascript:void(0)" class="div-link"></a>
-                                <div class="row">
-                                    <div class="col-12 d-flex justify-content-between">
-                                        <div class="d-flex justify-content-start align-items-center">
-                                            <div class="fb-profile">
-                                                <img src="assets/images/profile-img.jpg" alt="Name, Last Name" />
-                                            </div>
-                                            <div class="pl-2">
-                                                <div class="fb-employee-name">Ime Prezime</div>
-                                                <div class="fb-employee-data">
-                                                    <span class="fb-employee-unit">Unit</span>
-                                                    <span class="fb-employee-team">Client - team name</span>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="d-flex justify-content-end align-items-start">
-                                            <div class="badge badge-success w-100">talk type status</div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col-3">
-                                        <small>location</small>
-                                        <div><span class="badge badge-light w-100">location</span></div>
-                                    </div>
-                                    <div class="col-3">
-                                        <small>years working</small>
-                                        <div><span class="badge badge-light w-100">number</span></div>
-                                    </div>
-                                    <div class="col-3">
-                                        <small>talk type</small>
-                                        <div><span class="badge badge-light w-100">talk type</span></div>
-                                    </div>
-                                    <div class="col-3">
-                                        <small>talk date</small>
-                                        <div><span class="badge badge-light w-100">date</span></div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- DOC ENTRY -->
-                        <div class="col-12 col-xl-6 fb-doc-block">
-                            <div class="fb-doc-item mb-4">
-                                <a href="javascript:void(0)" class="div-link"></a>
-                                <div class="row">
-                                    <div class="col-12 d-flex justify-content-between">
-                                        <div class="d-flex justify-content-start align-items-center">
-                                            <div class="fb-profile">
-                                                <img src="assets/images/profile-img.jpg" alt="Name, Last Name" />
-                                            </div>
-                                            <div class="pl-2">
-                                                <div class="fb-employee-name">Ime Prezime</div>
-                                                <div class="fb-employee-data">
-                                                    <span class="fb-employee-unit">Unit</span>
-                                                    <span class="fb-employee-team">Client - team name</span>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="d-flex justify-content-end align-items-start">
-                                            <div class="badge badge-success w-100">talk type status</div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col-3">
-                                        <small>location</small>
-                                        <div><span class="badge badge-light w-100">location</span></div>
-                                    </div>
-                                    <div class="col-3">
-                                        <small>years working</small>
-                                        <div><span class="badge badge-light w-100">number</span></div>
-                                    </div>
-                                    <div class="col-3">
-                                        <small>talk type</small>
-                                        <div><span class="badge badge-light w-100">talk type</span></div>
-                                    </div>
-                                    <div class="col-3">
-                                        <small>talk date</small>
-                                        <div><span class="badge badge-light w-100">date</span></div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- DOC ENTRY -->
-                        <div class="col-12 col-xl-6 fb-doc-block">
-                            <div class="fb-doc-item mb-4">
-                                <a href="javascript:void(0)" class="div-link"></a>
-                                <div class="row">
-                                    <div class="col-12 d-flex justify-content-between">
-                                        <div class="d-flex justify-content-start align-items-center">
-                                            <div class="fb-profile">
-                                                <img src="assets/images/profile-img.jpg" alt="Name, Last Name" />
-                                            </div>
-                                            <div class="pl-2">
-                                                <div class="fb-employee-name">Ime Prezime</div>
-                                                <div class="fb-employee-data">
-                                                    <span class="fb-employee-unit">Unit</span>
-                                                    <span class="fb-employee-team">Client - team name</span>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="d-flex justify-content-end align-items-start">
-                                            <div class="badge badge-success w-100">talk type status</div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col-3">
-                                        <small>location</small>
-                                        <div><span class="badge badge-light w-100">location</span></div>
-                                    </div>
-                                    <div class="col-3">
-                                        <small>years working</small>
-                                        <div><span class="badge badge-light w-100">number</span></div>
-                                    </div>
-                                    <div class="col-3">
-                                        <small>talk type</small>
-                                        <div><span class="badge badge-light w-100">talk type</span></div>
-                                    </div>
-                                    <div class="col-3">
-                                        <small>talk date</small>
-                                        <div><span class="badge badge-light w-100">date</span></div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- DOC ENTRY -->
-                        <div class="col-12 col-xl-6 fb-doc-block">
-                            <div class="fb-doc-item mb-4">
-                                <a href="javascript:void(0)" class="div-link"></a>
-                                <div class="row">
-                                    <div class="col-12 d-flex justify-content-between">
-                                        <div class="d-flex justify-content-start align-items-center">
-                                            <div class="fb-profile">
-                                                <img src="assets/images/profile-img.jpg" alt="Name, Last Name" />
-                                            </div>
-                                            <div class="pl-2">
-                                                <div class="fb-employee-name">Ime Prezime</div>
-                                                <div class="fb-employee-data">
-                                                    <span class="fb-employee-unit">Unit</span>
-                                                    <span class="fb-employee-team">Client - team name</span>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="d-flex justify-content-end align-items-start">
-                                            <div class="badge badge-success w-100">talk type status</div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col-3">
-                                        <small>location</small>
-                                        <div><span class="badge badge-light w-100">location</span></div>
-                                    </div>
-                                    <div class="col-3">
-                                        <small>years working</small>
-                                        <div><span class="badge badge-light w-100">number</span></div>
-                                    </div>
-                                    <div class="col-3">
-                                        <small>talk type</small>
-                                        <div><span class="badge badge-light w-100">talk type</span></div>
-                                    </div>
-                                    <div class="col-3">
-                                        <small>talk date</small>
-                                        <div><span class="badge badge-light w-100">date</span></div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- DOC ENTRY -->
-                        <div class="col-12 col-xl-6 fb-doc-block">
-                            <div class="fb-doc-item mb-4">
-                                <a href="javascript:void(0)" class="div-link"></a>
-                                <div class="row">
-                                    <div class="col-12 d-flex justify-content-between">
-                                        <div class="d-flex justify-content-start align-items-center">
-                                            <div class="fb-profile">
-                                                <img src="assets/images/profile-img.jpg" alt="Name, Last Name" />
-                                            </div>
-                                            <div class="pl-2">
-                                                <div class="fb-employee-name">Ime Prezime</div>
-                                                <div class="fb-employee-data">
-                                                    <span class="fb-employee-unit">Unit</span>
-                                                    <span class="fb-employee-team">Client - team name</span>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="d-flex justify-content-end align-items-start">
-                                            <div class="badge badge-success w-100">talk type status</div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col-3">
-                                        <small>location</small>
-                                        <div><span class="badge badge-light w-100">location</span></div>
-                                    </div>
-                                    <div class="col-3">
-                                        <small>years working</small>
-                                        <div><span class="badge badge-light w-100">number</span></div>
-                                    </div>
-                                    <div class="col-3">
-                                        <small>talk type</small>
-                                        <div><span class="badge badge-light w-100">talk type</span></div>
-                                    </div>
-                                    <div class="col-3">
-                                        <small>talk date</small>
-                                        <div><span class="badge badge-light w-100">date</span></div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- DOC ENTRY -->
-                        <div class="col-12 col-xl-6 fb-doc-block">
-                            <div class="fb-doc-item mb-4">
-                                <a href="javascript:void(0)" class="div-link"></a>
-                                <div class="row">
-                                    <div class="col-12 d-flex justify-content-between">
-                                        <div class="d-flex justify-content-start align-items-center">
-                                            <div class="fb-profile">
-                                                <img src="assets/images/profile-img.jpg" alt="Name, Last Name" />
-                                            </div>
-                                            <div class="pl-2">
-                                                <div class="fb-employee-name">Ime Prezime</div>
-                                                <div class="fb-employee-data">
-                                                    <span class="fb-employee-unit">Unit</span>
-                                                    <span class="fb-employee-team">Client - team name</span>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="d-flex justify-content-end align-items-start">
-                                            <div class="badge badge-success w-100">talk type status</div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col-3">
-                                        <small>location</small>
-                                        <div><span class="badge badge-light w-100">location</span></div>
-                                    </div>
-                                    <div class="col-3">
-                                        <small>years working</small>
-                                        <div><span class="badge badge-light w-100">number</span></div>
-                                    </div>
-                                    <div class="col-3">
-                                        <small>talk type</small>
-                                        <div><span class="badge badge-light w-100">talk type</span></div>
-                                    </div>
-                                    <div class="col-3">
-                                        <small>talk date</small>
-                                        <div><span class="badge badge-light w-100">date</span></div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- DOC ENTRY -->
-                        <div class="col-12 col-xl-6 fb-doc-block">
-                            <div class="fb-doc-item mb-4">
-                                <a href="javascript:void(0)" class="div-link"></a>
-                                <div class="row">
-                                    <div class="col-12 d-flex justify-content-between">
-                                        <div class="d-flex justify-content-start align-items-center">
-                                            <div class="fb-profile">
-                                                <img src="assets/images/profile-img.jpg" alt="Name, Last Name" />
-                                            </div>
-                                            <div class="pl-2">
-                                                <div class="fb-employee-name">Ime Prezime</div>
-                                                <div class="fb-employee-data">
-                                                    <span class="fb-employee-unit">Unit</span>
-                                                    <span class="fb-employee-team">Client - team name</span>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="d-flex justify-content-end align-items-start">
-                                            <div class="badge badge-success w-100">talk type status</div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col-3">
-                                        <small>location</small>
-                                        <div><span class="badge badge-light w-100">location</span></div>
-                                    </div>
-                                    <div class="col-3">
-                                        <small>years working</small>
-                                        <div><span class="badge badge-light w-100">number</span></div>
-                                    </div>
-                                    <div class="col-3">
-                                        <small>talk type</small>
-                                        <div><span class="badge badge-light w-100">talk type</span></div>
-                                    </div>
-                                    <div class="col-3">
-                                        <small>talk date</small>
-                                        <div><span class="badge badge-light w-100">date</span></div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- DOC ENTRY -->
-                        <div class="col-12 col-xl-6 fb-doc-block">
-                            <div class="fb-doc-item mb-4">
-                                <a href="javascript:void(0)" class="div-link"></a>
-                                <div class="row">
-                                    <div class="col-12 d-flex justify-content-between">
-                                        <div class="d-flex justify-content-start align-items-center">
-                                            <div class="fb-profile">
-                                                <img src="assets/images/profile-img.jpg" alt="Name, Last Name" />
-                                            </div>
-                                            <div class="pl-2">
-                                                <div class="fb-employee-name">Ime Prezime</div>
-                                                <div class="fb-employee-data">
-                                                    <span class="fb-employee-unit">Unit</span>
-                                                    <span class="fb-employee-team">Client - team name</span>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="d-flex justify-content-end align-items-start">
-                                            <div class="badge badge-success w-100">talk type status</div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col-3">
-                                        <small>location</small>
-                                        <div><span class="badge badge-light w-100">location</span></div>
-                                    </div>
-                                    <div class="col-3">
-                                        <small>years working</small>
-                                        <div><span class="badge badge-light w-100">number</span></div>
-                                    </div>
-                                    <div class="col-3">
-                                        <small>talk type</small>
-                                        <div><span class="badge badge-light w-100">talk type</span></div>
-                                    </div>
-                                    <div class="col-3">
-                                        <small>talk date</small>
-                                        <div><span class="badge badge-light w-100">date</span></div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- DOC ENTRY -->
-                        <div class="col-12 col-xl-6 fb-doc-block">
-                            <div class="fb-doc-item mb-4">
-                                <a href="javascript:void(0)" class="div-link"></a>
-                                <div class="row">
-                                    <div class="col-12 d-flex justify-content-between">
-                                        <div class="d-flex justify-content-start align-items-center">
-                                            <div class="fb-profile">
-                                                <img src="assets/images/profile-img.jpg" alt="Name, Last Name" />
-                                            </div>
-                                            <div class="pl-2">
-                                                <div class="fb-employee-name">Ime Prezime</div>
-                                                <div class="fb-employee-data">
-                                                    <span class="fb-employee-unit">Unit</span>
-                                                    <span class="fb-employee-team">Client - team name</span>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="d-flex justify-content-end align-items-start">
-                                            <div class="badge badge-success w-100">talk type status</div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col-3">
-                                        <small>location</small>
-                                        <div><span class="badge badge-light w-100">location</span></div>
-                                    </div>
-                                    <div class="col-3">
-                                        <small>years working</small>
-                                        <div><span class="badge badge-light w-100">number</span></div>
-                                    </div>
-                                    <div class="col-3">
-                                        <small>talk type</small>
-                                        <div><span class="badge badge-light w-100">talk type</span></div>
-                                    </div>
-                                    <div class="col-3">
-                                        <small>talk date</small>
-                                        <div><span class="badge badge-light w-100">date</span></div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- DOC ENTRY -->
-                        <div class="col-12 col-xl-6 fb-doc-block">
-                            <div class="fb-doc-item mb-4">
-                                <a href="javascript:void(0)" class="div-link"></a>
-                                <div class="row">
-                                    <div class="col-12 d-flex justify-content-between">
-                                        <div class="d-flex justify-content-start align-items-center">
-                                            <div class="fb-profile">
-                                                <img src="assets/images/profile-img.jpg" alt="Name, Last Name" />
-                                            </div>
-                                            <div class="pl-2">
-                                                <div class="fb-employee-name">Ime Prezime</div>
-                                                <div class="fb-employee-data">
-                                                    <span class="fb-employee-unit">Unit</span>
-                                                    <span class="fb-employee-team">Client - team name</span>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="d-flex justify-content-end align-items-start">
-                                            <div class="badge badge-success w-100">talk type status</div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col-3">
-                                        <small>location</small>
-                                        <div><span class="badge badge-light w-100">location</span></div>
-                                    </div>
-                                    <div class="col-3">
-                                        <small>years working</small>
-                                        <div><span class="badge badge-light w-100">number</span></div>
-                                    </div>
-                                    <div class="col-3">
-                                        <small>talk type</small>
-                                        <div><span class="badge badge-light w-100">talk type</span></div>
-                                    </div>
-                                    <div class="col-3">
-                                        <small>talk date</small>
-                                        <div><span class="badge badge-light w-100">date</span></div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-12 d-flex justify-content-center py-4">
-                            <button id="load-more" class="confirm">load more</button>
                         </div>
                     </div>
                 </div>
@@ -1699,7 +1955,7 @@
                     <!-- EMPLOYEE ENTRY -->
                     <div class="fb-employee col-12 col-sm-6 col-md-4 col-xl-3">
                         <div class="fb-doc-item mb-3">
-                            <a href="javascript:void(0)" class="div-link"></a>
+                            <a href="profile.html" target="_blank" class="div-link"></a>
                             <div class="row">
                                 <div class="col-12 d-flex justify-content-start align-items-center">
                                     <div class="fb-profile">
@@ -1719,7 +1975,7 @@
                     <!-- EMPLOYEE ENTRY -->
                     <div class="fb-employee col-12 col-sm-6 col-md-4 col-xl-3">
                         <div class="fb-doc-item mb-3">
-                            <a href="javascript:void(0)" class="div-link"></a>
+                            <a href="profile.html" target="_blank" class="div-link"></a>
                             <div class="row">
                                 <div class="col-12 d-flex justify-content-start align-items-center">
                                     <div class="fb-profile">
@@ -1739,7 +1995,7 @@
                     <!-- EMPLOYEE ENTRY -->
                     <div class="fb-employee col-12 col-sm-6 col-md-4 col-xl-3">
                         <div class="fb-doc-item mb-3">
-                            <a href="javascript:void(0)" class="div-link"></a>
+                            <a href="profile.html" target="_blank" class="div-link"></a>
                             <div class="row">
                                 <div class="col-12 d-flex justify-content-start align-items-center">
                                     <div class="fb-profile">
@@ -1759,7 +2015,7 @@
                     <!-- EMPLOYEE ENTRY -->
                     <div class="fb-employee col-12 col-sm-6 col-md-4 col-xl-3">
                         <div class="fb-doc-item mb-3">
-                            <a href="javascript:void(0)" class="div-link"></a>
+                            <a href="profile.html" target="_blank" class="div-link"></a>
                             <div class="row">
                                 <div class="col-12 d-flex justify-content-start align-items-center">
                                     <div class="fb-profile">
@@ -1779,7 +2035,7 @@
                     <!-- EMPLOYEE ENTRY -->
                     <div class="fb-employee col-12 col-sm-6 col-md-4 col-xl-3">
                         <div class="fb-doc-item mb-3">
-                            <a href="javascript:void(0)" class="div-link"></a>
+                            <a href="profile.html" target="_blank" class="div-link"></a>
                             <div class="row">
                                 <div class="col-12 d-flex justify-content-start align-items-center">
                                     <div class="fb-profile">
@@ -1799,7 +2055,7 @@
                     <!-- EMPLOYEE ENTRY -->
                     <div class="fb-employee col-12 col-sm-6 col-md-4 col-xl-3">
                         <div class="fb-doc-item mb-3">
-                            <a href="javascript:void(0)" class="div-link"></a>
+                            <a href="profile.html" target="_blank" class="div-link"></a>
                             <div class="row">
                                 <div class="col-12 d-flex justify-content-start align-items-center">
                                     <div class="fb-profile">
@@ -1819,7 +2075,7 @@
                     <!-- EMPLOYEE ENTRY -->
                     <div class="fb-employee col-12 col-sm-6 col-md-4 col-xl-3">
                         <div class="fb-doc-item mb-3">
-                            <a href="javascript:void(0)" class="div-link"></a>
+                            <a href="profile.html" target="_blank" class="div-link"></a>
                             <div class="row">
                                 <div class="col-12 d-flex justify-content-start align-items-center">
                                     <div class="fb-profile">
@@ -1839,7 +2095,7 @@
                     <!-- EMPLOYEE ENTRY -->
                     <div class="fb-employee col-12 col-sm-6 col-md-4 col-xl-3">
                         <div class="fb-doc-item mb-3">
-                            <a href="javascript:void(0)" class="div-link"></a>
+                            <a href="profile.html" target="_blank" class="div-link"></a>
                             <div class="row">
                                 <div class="col-12 d-flex justify-content-start align-items-center">
                                     <div class="fb-profile">

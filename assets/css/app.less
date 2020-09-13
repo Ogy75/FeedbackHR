@@ -84,113 +84,22 @@ a{
     width: 200px;
     height: 22px;
   }
-  .fb-profile {
-    display: inline-block;
-    //background: white;
-    width: 48px;
-    min-width: 48px;
-    height: 48px;
-    border-radius: 50%;
-    overflow: hidden;
-    position: relative;
-    img {
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      width: 48px;
-      height: auto;
-      transform: translate(-50%, -50%);
-    }
-    span{
-      display: block;
-      font-size: 26px;
-      position: relative;
-      width:48px;
-      height:48px;
-      line-height: 50px;
-      text-align: center;
-      .fb-notification-no{
-        width:20px;
-        height:20px;
-        font-size: 10px;
-        font-family: 'Roboto';
-        font-weight: 500;
-        line-height: 10px;
-        padding: 5px 0;
-        text-align: center;
-        color:white;
-        background:#dc3545;
-        position: absolute;
-        letter-spacing: -.5px;
-        border-radius: 50%;
-        left:50%;
-        top:4px;
-        border: 1px solid #f0394b;
-        box-shadow: 1px 1px 6px 0 rgba(0, 0, 0, 0.2);
-      }
-    }
+}
+.badge{
+  font-size: 11px;
+  font-weight: 400;
+  line-height: 12px;
+  border-radius: 3px;
+  &.badge-light{
+    background-color: lighten(@basetextColor, 68%);
+    white-space: nowrap!important;
+  overflow: hidden;
+  text-overflow: ellipsis;
   }
+}
+  
   .fb-dropdown-cta{
     cursor: pointer;
-  }
-  .badge{
-    font-size: 11px;
-    font-weight: 400;
-    line-height: 12px;
-    border-radius: 3px;
-    &.badge-light{
-      background-color: lighten(@basetextColor, 68%);
-      white-space: nowrap!important;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    }
-  }
-  button{
-    padding: 6px 20px;
-    min-width: 100px;
-    border-radius: 4px;
-    font-size: 14px;
-    line-height: 17px;
-    font-weight: 500;
-    border: 1px solid @basetextColor;
-    color:@basetextColor;
-    transition: 150ms ease-in-out;
-    background: transparent;
-    &:focus{
-      outline: none;
-    }
-    &:hover{
-      background-position: 0 0;
-      color:white;
-    }
-    &:disabled{
-      background-color: fade(@basetextColor, 50%);
-      color:fade(@basetextColor, 70%);
-    }
-  }
-  .confirm{
-    background-image:linear-gradient(to right, @highlightColor 50%, transparent 0);
-    background-size: 200% 100%;
-    background-position: 100% 0;
-    background-repeat: no-repeat;
-    &:hover{
-      border:1px solid @highlightColor;
-    }
-    &:active{
-      background: darken(@highlightColor, 30%);
-    }
-  }
-  .cancel{
-    background-image:linear-gradient(to right, @basetextColor 50%, transparent 0);
-    background-size: 200% 100%;
-    background-position: 100% 0;
-    background-repeat: no-repeat;
-    &:hover{
-      border:1px solid @basetextColor;
-    }
-    &:active{
-      background: darken(@basetextColor, 20%);
-    }
   }
   .fb-info-item{
     display: inline-block;
@@ -201,13 +110,13 @@ a{
       right:-6px;
       top:60px;
       width:300px;
-      height:300px;
+      height:400px;
       max-height: 460px;
       background: white;
       z-index: 10;
       border-radius: 8px;
       box-shadow: 3px 3px 8px 0 rgba(0, 0, 0, 0.15);
-      padding: 0 6px 6px 6px;
+      //padding: 0 6px 6px 6px;
       .fb-dropdown-menu-pointer{
         display: block;
         width:12px;
@@ -227,6 +136,100 @@ a{
       }
     }
   }
+
+button{
+  padding: 6px 20px;
+  min-width: 100px;
+  border-radius: 4px;
+  font-size: 13px;
+  text-transform: uppercase;
+  //letter-spacing: 2px;
+  line-height: 17px;
+  font-weight: 500;
+  border: 1px solid @basetextColor !important;
+  color:@basetextColor;
+  transition: 150ms ease-in-out;
+  background: transparent;
+  &:focus{
+    outline: none;
+  }
+  &:hover{
+    background-position: 0 0;
+    color:white;
+  }
+  &:disabled{
+    background-color: fade(@basetextColor, 50%);
+    color:fade(@basetextColor, 70%);
+  }
+}
+.confirm{
+  background-image:linear-gradient(to right, @highlightColor 50%, transparent 0);
+  background-size: 200% 100%;
+  background-position: 100% 0;
+  background-repeat: no-repeat;
+  &:hover{
+    border:1px solid @highlightColor !important;
+  }
+  &:active{
+    background: darken(@highlightColor, 30%);
+  }
+}
+.cancel{
+  background-image:linear-gradient(to right, @basetextColor 50%, transparent 0);
+  background-size: 200% 100%;
+  background-position: 100% 0;
+  background-repeat: no-repeat;
+  &:hover{
+    border:1px solid @basetextColor !important;
+  }
+  &:active{
+    background: darken(@basetextColor, 20%);
+  }
+}
+.fb-profile {
+  display: inline-block;
+  width: 48px;
+  min-width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  overflow: hidden;
+  position: relative;
+  img {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 48px;
+    height: auto;
+    transform: translate(-50%, -50%);
+  }
+  span{
+    display: block;
+    font-size: 26px;
+    position: relative;
+    width:48px;
+    height:48px;
+    line-height: 50px;
+    text-align: center;
+    .fb-notification-no{
+      width:20px;
+      height:20px;
+      font-size: 10px;
+      font-family: 'Roboto';
+      font-weight: 500;
+      line-height: 10px;
+      padding: 5px 0;
+      text-align: center;
+      color:white;
+      background:#dc3545;
+      position: absolute;
+      letter-spacing: -.5px;
+      border-radius: 50%;
+      left:50%;
+      top:4px;
+      border: 1px solid #f0394b;
+      box-shadow: 1px 1px 6px 0 rgba(0, 0, 0, 0.2);
+    }
+  }
 }
 small {
   display: block;
@@ -238,6 +241,8 @@ small {
   margin:0;
 }
 .fb-tab {
+  text-align: center;
+  position: relative;
   padding: 10px 20px;
   letter-spacing: 0.25px;
   font-weight: 500;
@@ -261,14 +266,14 @@ small {
   border-radius: 12px;
   background: white;
   padding: 20px 30px;
-  .fb-panel-title {
-    display: block;
-    font-weight: 500;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-    color: fade(@basetextColor, 60%);
-    //margin-bottom: 1rem;
-  }
+}
+.fb-panel-title {
+  display: block;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: fade(@basetextColor, 60%);
+  //margin-bottom: 1rem;
 }
 .fb-doc-item {
   position: relative;
@@ -396,11 +401,20 @@ table {
       background: white;
       border-bottom: 1px solid fade(@basetextColor, 15%);
       transition: @mainTransition;
+      &:first-of-type{
+        border-top: 1px solid fade(@basetextColor, 15%);
+      }
       &:hover {
         background: fade(@basetextColor, 10%);
       }
       td {
         padding: 8px;
+        &:last-of-type{
+          text-align: right;
+          &:nth-child(2){
+            font-weight: 500;
+          }
+        }
       }
     }
   }
@@ -417,7 +431,8 @@ table {
 
 //INPUT ELEMENTS
 input[type=text],
-input[type=password]{
+input[type=password],
+textarea{
   display: block;
   width:100%;
   outline:none;
@@ -440,6 +455,7 @@ input[type=password]{
     border:1px solid red;
   }
 }
+
 span.input-error-message{
   visibility: hidden;
   display: block;
@@ -480,4 +496,93 @@ label{
   white-space: nowrap!important;
   overflow: hidden;
   text-overflow: ellipsis;
+}
+.no-results{
+  color:lighten(@basetextColor, 40%);
+}
+
+//MODAL
+.modal{
+  .modal-head, .modal-body, .modal-foot{
+    padding:2rem;
+  }
+  .modal-head{
+    background:@highlightColor;
+    color:white;
+    small{
+      color:white;
+    }
+  }
+  .fb-modal-talktype-title{
+    font-size:1rem;
+    font-weight: 300;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+  }
+  .modal-content{
+    border-radius: 0;
+    border:none !important;
+  }
+}
+.fb-empty-mark{
+  position: absolute;
+  font-size: 12px;
+  color:@warningColor;
+  top:3px;
+  right:6px;
+}
+
+//CHECKBOX
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 30px;
+  height: 18px;
+  border-radius: 2px;
+  margin: 0;
+  vertical-align: middle;
+  input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+  }
+}
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: lighten(@basetextColor, 60%);
+  -webkit-transition: 0.4s;
+  transition: 0.4s;
+  &:before {
+    position: absolute;
+    content: "";
+    height: 14px;
+    width: 14px;
+    border-radius: 1px;
+    left: 2px;
+    bottom: 2px;
+    background-color: white;
+    -webkit-transition: 0.4s;
+    transition: 0.4s;
+  }
+}
+input:checked + .slider {
+  background-color: @confirmColor;
+}
+
+input:focus + .slider {
+  box-shadow: 0 0 1px @confirmColor;
+}
+input:checked + .slider:before {
+  -webkit-transform: translateX(12px);
+  -ms-transform: translateX(12px);
+  transform: translateX(12px);
+}
+.checkbox-label {
+  line-height: 18px;
+  font-size: 12px;
 }
