@@ -101,6 +101,7 @@ a:hover {
   z-index: 10;
   border-radius: 8px;
   box-shadow: 3px 3px 8px 0 rgba(0, 0, 0, 0.15);
+  z-index: 2000;
 }
 .fb-info-item .fb-dropdown-menu .fb-dropdown-menu-pointer {
   display: block;
