@@ -194,6 +194,7 @@ $(document).ready(function () {
             $('#follow-up-reasons').hide();
             $('#follow-up-form').hide();
             $('#s-topic').hide();
+            $('#salary').prop('disabled');
 
         }
         else{
@@ -205,6 +206,7 @@ $(document).ready(function () {
             $('#follow-up-form').show();
             $('#s-topic').show();
             $('#expected').focus();
+            $('#salary').prop('disabled', false);
         }
     });
 
