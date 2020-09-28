@@ -98,10 +98,10 @@ a:hover {
   height: 400px;
   max-height: 460px;
   background: white;
-  z-index: 10;
   border-radius: 8px;
   box-shadow: 3px 3px 8px 0 rgba(0, 0, 0, 0.15);
-  z-index: 2000;
+  z-index: 10;
+  border: 1px solid rgba(66, 66, 60, 0.15);
 }
 .fb-info-item .fb-dropdown-menu .fb-dropdown-menu-pointer {
   display: block;
@@ -109,11 +109,11 @@ a:hover {
   height: 12px;
   background: white;
   transform: rotate(45deg);
-  border-top: 1px solid rgba(66, 66, 60, 0.1);
-  border-left: 1px solid rgba(66, 66, 60, 0.1);
+  border-top: 1px solid rgba(66, 66, 60, 0.15);
+  border-left: 1px solid rgba(66, 66, 60, 0.15);
   position: absolute;
   top: -6px;
-  right: 23px;
+  right: 20px;
 }
 .fb-info-item .fb-dropdown-menu .fb-notification-wrapper {
   height: calc(100% - 51px);
@@ -170,9 +170,9 @@ button:disabled {
 }
 .fb-profile {
   display: inline-block;
-  width: 48px;
-  min-width: 48px;
-  height: 48px;
+  width: 42px;
+  min-width: 42px;
+  height: 42px;
   border-radius: 50%;
   overflow: hidden;
   position: relative;
@@ -189,9 +189,9 @@ button:disabled {
   display: block;
   font-size: 26px;
   position: relative;
-  width: 48px;
-  height: 48px;
-  line-height: 50px;
+  width: 42px;
+  height: 42px;
+  line-height: 42px;
   text-align: center;
 }
 .fb-profile span .fb-notification-no {
@@ -208,8 +208,8 @@ button:disabled {
   position: absolute;
   letter-spacing: -0.5px;
   border-radius: 50%;
-  left: 50%;
-  top: 4px;
+  left: 44%;
+  top: 3px;
   border: 1px solid #f0394b;
   box-shadow: 1px 1px 6px 0 rgba(0, 0, 0, 0.2);
 }
@@ -436,6 +436,10 @@ input[type=password].input-error,
 textarea.input-error {
   border: 1px solid red;
 }
+input[type="radio"] {
+  margin-top: -1px;
+  vertical-align: middle;
+}
 span.input-error-message {
   visibility: hidden;
   display: block;
@@ -563,4 +567,28 @@ input:checked + .slider:before {
 .checkbox-label {
   line-height: 18px;
   font-size: 12px;
+}
+.fb-add-new {
+  display: block;
+  background: #1E9BCC;
+  color: white;
+  transition: all 0.12s linear;
+}
+.fb-add-new:hover {
+  background: #146889;
+  color: rgba(255, 255, 255, 0.65);
+}
+.fb-menu-item {
+  color: #42423c;
+  display: block;
+  padding: 8px;
+  border-radius: 4px;
+  transition: all 0.12s linear;
+}
+.fb-menu-item:hover {
+  background: rgba(66, 66, 60, 0.1);
+  color: #42423c;
+}
+.fb-menu-item:last-of-type {
+  margin-bottom: 1rem;
 }

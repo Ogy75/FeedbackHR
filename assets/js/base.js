@@ -98,17 +98,23 @@ $(document).ready(function () {
     //***SEARCH FILTER END***//
 
     //Dropdown menu
-    //$('.fb-dropdown-menu').hide();
+
     $('.fb-dropdown-cta').on('click', function () {
         $('.fb-dropdown-menu').hide();
         $(this).find('.fb-dropdown-menu').show();
-        $(document).mouseup(function (e) {
-            var container = $('.fb-dropdown-menu');
-            if (!container.is(e.target) && container.has(e.target).length === 0) {
-                container.hide();
-            }
-        });
     });
+    $(document).mouseup(function (e) {
+        var container = $('.fb-dropdown-menu');
+        if (!container.is(e.target) && container.has(e.target).length === 0) {
+            container.hide();
+        };
+    });
+
+    $('.fb-menu-item').on('mouseup', function(){
+        $('.fb-dropdown-menu').hide();
+    });
+
+    
 
     //reset filters
     $('#reset-selection').on('click', function(){
@@ -194,7 +200,8 @@ $(document).ready(function () {
             $('#follow-up-reasons').hide();
             $('#follow-up-form').hide();
             $('#s-topic').hide();
-            $('#salary').prop('disabled');
+            $('#salary').prop('disabled', false);
+            
 
         }
         else{
@@ -206,7 +213,7 @@ $(document).ready(function () {
             $('#follow-up-form').show();
             $('#s-topic').show();
             $('#expected').focus();
-            $('#salary').prop('disabled', false);
+            $('#salary').prop('disabled', true);
         }
     });
 
@@ -237,15 +244,6 @@ $(document).ready(function () {
         }
         else if($(this).prop('checked', false)){
             $("#" + tab_id).hide();
-        }
-    });
-
-    $('.resolved').on('change', function () {
-        if($(this).prop('checked')){
-            $(this).parents('.topic').find('textarea').hide();
-        }
-        else{
-            $(this).parents('.topic').find('textarea').show();
         }
     });
 

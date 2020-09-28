@@ -116,19 +116,19 @@ a{
       z-index: 10;
       border-radius: 8px;
       box-shadow: 3px 3px 8px 0 rgba(0, 0, 0, 0.15);
-      z-index: 2000;
-      //padding: 0 6px 6px 6px;
+      z-index: 10;
+      border:1px solid fade(@basetextColor, 15%);
       .fb-dropdown-menu-pointer{
         display: block;
         width:12px;
         height: 12px;
         background: white;
         transform: rotate(45deg);
-        border-top:1px solid fade(@basetextColor, 10%);
-        border-left:1px solid fade(@basetextColor, 10%);
+        border-top:1px solid fade(@basetextColor, 15%);
+        border-left:1px solid fade(@basetextColor, 15%);
         position: absolute;
         top: -6px;
-        right:23px;
+        right:20px;
       }
       .fb-notification-wrapper{
         height:calc(100% - 51px);
@@ -189,9 +189,9 @@ button{
 }
 .fb-profile {
   display: inline-block;
-  width: 48px;
-  min-width: 48px;
-  height: 48px;
+  width: 42px;
+  min-width: 42px;
+  height: 42px;
   border-radius: 50%;
   overflow: hidden;
   position: relative;
@@ -207,9 +207,9 @@ button{
     display: block;
     font-size: 26px;
     position: relative;
-    width:48px;
-    height:48px;
-    line-height: 50px;
+    width:42px;
+    height:42px;
+    line-height: 42px;
     text-align: center;
     .fb-notification-no{
       width:20px;
@@ -225,8 +225,8 @@ button{
       position: absolute;
       letter-spacing: -.5px;
       border-radius: 50%;
-      left:50%;
-      top:4px;
+      left:44%;
+      top:3px;
       border: 1px solid #f0394b;
       box-shadow: 1px 1px 6px 0 rgba(0, 0, 0, 0.2);
     }
@@ -456,6 +456,10 @@ textarea{
     border:1px solid red;
   }
 }
+input[type="radio"] {
+  margin-top: -1px;
+  vertical-align: middle;
+}
 
 span.input-error-message{
   visibility: hidden;
@@ -589,4 +593,28 @@ input:checked + .slider:before {
 .checkbox-label {
   line-height: 18px;
   font-size: 12px;
+}
+.fb-add-new{
+  display:block;
+  background: @highlightColor;
+  color: white;
+  transition: @mainTransition;
+  &:hover{
+    background: darken(@highlightColor, 15%);
+    color:fade(white, 65%);
+  }
+}
+.fb-menu-item{
+  color:@basetextColor;
+  display:block;
+  padding:8px;
+  border-radius: 4px;
+  transition: @mainTransition;
+  &:hover{
+    background: fade(@basetextColor, 10%);
+    color: @basetextColor;
+  }
+  &:last-of-type{
+    margin-bottom:1rem;
+  }
 }

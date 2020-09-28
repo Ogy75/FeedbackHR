@@ -1,0 +1,514 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=1.0, user-scalable=no">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+    <link rel="stylesheet" href="assets/css/app.css" />
+    <link rel="stylesheet" href="assets/css/ti.css">
+    <link rel="stylesheet" type="text/css" href="assets/vendor/notiflix2/notiflix-2.1.3.css">
+
+    <!-- UI HELPER - BRISE SE U PROJEKTU, kao i klasa js_uiHelperPanel klasama u markapu -->
+    <link rel="stylesheet" href="assets/css/helper.css">
+    
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="assets/js/base.js"></script>
+    <!-- <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script> -->
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
+    <script src="assets/vendor/notiflix2/notiflix-2.1.3.js"></script>
+    
+</head>
+
+<body>
+
+
+    <!-- MODALS END -->
+
+
+    <!-- <div id="ui-helper">
+        <div>UI help tool - Remove in Production!</div>
+        <div class="font-weight-bold">
+            <span id="wWidth"></span>
+            <span> X </span>
+            <span id="wHeight"></span>
+        </div>
+        <a href="javascript:void(0)" data-tab="recent-documents" class="helper-switch badge badge-danger">show all employee documents</a>
+        <a href="javascript:void(0)" data-tab="filter-no-results" class="helper-switch badge badge-danger">show filter no-results</a>
+    </div> -->
+    <header>
+        <div class="container">
+            <div class="row">
+                <div class="col-12 d-flex justify-content-between align-items-center">
+                    <div class="fb-app-logo">
+                        <img src="assets/images/logo_efeedback_01.svg" alt="enjoy.ing HR feedback" />
+                    </div>
+                    <div>
+                        <div class="fb-info-item fb-dropdown-cta">
+                            <div class="fb-profile">
+                                <span class="ti-bell">
+                                    <div class="fb-notification-no">5</div>
+                                </span>
+                            </div>
+                            <div class="fb-dropdown-menu">
+                                <div class="fb-dropdown-menu-pointer"></div>
+                                <h6 class="p-3 m-0">open talks reminder</h6>
+                                <div class="fb-notification-wrapper">
+                                    <!-- Notification link -->
+                                    <div class="fb-employee">
+                                        <div class="fb-doc-item mb-3">
+                                            <a href="javascript:void(0)" class="div-link"></a>
+                                            <div class="row">
+                                                <div class="col-12 d-flex justify-content-start align-items-center">
+                                                    <div class="fb-profile">
+                                                        <img src="assets/images/profile-img.jpg" alt="Name, Last Name">
+                                                    </div>
+                                                    <div class="pl-2">
+                                                        <div class="fb-employee-name">Dejan Dejanovic</div>
+                                                        <div class="fb-employee-team">Crealogix - Digital Banking</div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-12 text-right mt-2">
+                                                    <span class="badge badge-secondary">PAT</span>
+                                                    <span class="badge badge-danger">follow-up open</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- Notification link -->
+                                    <div class="fb-employee">
+                                        <div class="fb-doc-item mb-3">
+                                            <a href="javascript:void(0)" class="div-link"></a>
+                                            <div class="row">
+                                                <div class="col-12 d-flex justify-content-start align-items-center">
+                                                    <div class="fb-profile">
+                                                        <img src="assets/images/profile-img.jpg" alt="Name, Last Name">
+                                                    </div>
+                                                    <div class="pl-2">
+                                                        <div class="fb-employee-name">Marko Markovic</div>
+                                                        <div class="fb-employee-team">Edelweiss Cloud</div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-12 text-right mt-2">
+                                                    <span class="badge badge-secondary">EOP</span>
+                                                    <span class="badge badge-danger">follow-up open</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- Notification link -->
+                                    <div class="fb-employee">
+                                        <div class="fb-doc-item mb-3">
+                                            <a href="javascript:void(0)" class="div-link"></a>
+                                            <div class="row">
+                                                <div class="col-12 d-flex justify-content-start align-items-center">
+                                                    <div class="fb-profile">
+                                                        <img src="assets/images/profile-img.jpg" alt="Name, Last Name">
+                                                    </div>
+                                                    <div class="pl-2">
+                                                        <div class="fb-employee-name">Marko Markovic</div>
+                                                        <div class="fb-employee-team">Edelweiss Cloud</div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-12 text-right mt-2">
+                                                    <span class="badge badge-secondary">EOP</span>
+                                                    <span class="badge badge-danger">follow-up open</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- Notification link -->
+                                    <div class="fb-employee">
+                                        <div class="fb-doc-item mb-3">
+                                            <a href="javascript:void(0)" class="div-link"></a>
+                                            <div class="row">
+                                                <div class="col-12 d-flex justify-content-start align-items-center">
+                                                    <div class="fb-profile">
+                                                        <img src="assets/images/profile-img.jpg" alt="Name, Last Name">
+                                                    </div>
+                                                    <div class="pl-2">
+                                                        <div class="fb-employee-name">Marko Markovic</div>
+                                                        <div class="fb-employee-team">Edelweiss Cloud</div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-12 text-right mt-2">
+                                                    <span class="badge badge-secondary">EOP</span>
+                                                    <span class="badge badge-danger">follow-up open</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- Notification link -->
+                                    <div class="fb-employee">
+                                        <div class="fb-doc-item mb-3">
+                                            <a href="javascript:void(0)" class="div-link"></a>
+                                            <div class="row">
+                                                <div class="col-12 d-flex justify-content-start align-items-center">
+                                                    <div class="fb-profile">
+                                                        <img src="assets/images/profile-img.jpg" alt="Name, Last Name">
+                                                    </div>
+                                                    <div class="pl-2">
+                                                        <div class="fb-employee-name">Marko Markovic</div>
+                                                        <div class="fb-employee-team">Edelweiss Cloud</div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-12 text-right mt-2">
+                                                    <span class="badge badge-secondary">EOP</span>
+                                                    <span class="badge badge-danger">follow-up open</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="fb-info-item fb-dropdown-cta ml-2">
+                            <div class="fb-profile">
+                                <img src="assets/images/profile-img.jpg" alt="Name, Last Name" />
+                            </div>
+                            <div class="fb-dropdown-menu h-auto">
+                                <div class="fb-dropdown-menu-pointer"></div>
+                                2
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <div class="container content">
+        <!-- <div class="row">
+            <div class="col-12 offset-md-2 col-md-8 d-flex justify-content-start align-items-center">
+                <span><span class="ti-close mr-2"></span>back</span>
+            </div>
+        </div> -->
+        <div class="row mb-5">
+            <div class="col-6">
+
+                <div class="modal-content">
+                    <div class="modal-head">
+                        <!-- <button type="button" class="close d-block" data-dismiss="modal" aria-label="Close">
+                            <span class="ti-close" aria-hidden="true"></span>
+                        </button> -->
+                        <div class="d-inline-block text-center w-100">
+                            <div class="fb-profile">
+                                <img src="assets/images/profile-img.jpg" alt="Name, Last Name">
+                            </div>
+                            <div class="fb-employee-name">Marko Markovic</div>
+                            <div class="row d-flex justify-content-center pt-4">
+                                <div class="col-3">
+                                    <small>probation start</small>
+                                    <span class="badge badge-secondary">20.04.2020</span>
+                                </div>
+                                <div class="col-3">
+                                    <small>probation end</small>
+                                    <span class="badge badge-secondary">20.07.2020</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-body">
+                        <div class="row mb-4">
+                            <div class="col-12">
+                                <div class="col-12 d-flex justify-content-center align-items-center">
+                                    <span class="fb-tab text-nowrap text-truncate selected" data-tab="tab-hr">HR Report<div class="fb-empty-mark ti-alert"></div></span>
+                                    <span class="fb-tab text-nowrap text-truncate" data-tab="tab-line">Line Manager</span>
+                                    <span class="fb-tab text-nowrap text-truncate" data-tab="tab-lead">Team Lead</span>
+                                    <span class="fb-tab text-nowrap text-truncate" data-tab="tab-client">Client<div class="fb-empty-mark ti-alert"></div></span>
+                                </div>
+                            </div>
+                        </div>
+                        <h6 class="d-block py-2 mb-3 mt-4 border-bottom">End of Probation report</h6>
+                        <div class="tab-content" id="tab-hr">
+                            <div class="row mt-4">
+                                <div class="col-6">
+                                    <label for="talk-date">talk date</label>
+                                    <input type="text" name="talk-date" class="mb-4" />
+                                </div>
+                                <div class="col-6">
+                                    <label for="hr-reporter-name">HR reporter</label>
+                                    <input type="text" name="hr-reporter-name" class="mb-4" value="Jelena Brankovic" disabled />
+                                </div>
+                                <div class="col-12">
+                                    <label for="employee-impressions">Employee impressions</label>
+                                    <textarea name="employee-impressions" class="mb-2" rows="2"></textarea>
+                                </div>
+                                <div class="col-12">
+                                    <label for="performance-feedback">Performance feedback</label>
+                                    <textarea name="performance-feedback" class="mb-2" rows="2"></textarea>
+                                </div>
+                                <div class="col-12 mb-1">
+                                    <label for="next-steps">Next steps</label>
+                                    <textarea name="next-steps" class="mb-2" rows="2"></textarea>
+                                </div>
+                                <div class="col-12 mb-4">
+                                    <label for="recommendation">Final recommendation</label>
+                                    <textarea name="recommendation" rows="2"></textarea>
+                                </div>
+                                <!-- SALARY -->
+                                <div class="col-12 mb-4">
+                                    <div class="border rounded bg-light p-3">
+                                        <span class="fb-panel-title mb-3">salary</span>
+                                        <div class="row">
+                                            <div class="col-6">
+                                                <div class="mb-3">
+                                                    <label class="switch">
+                                                        <input type="checkbox" id="salary-change">
+                                                        <span class="slider"></span>
+                                                    </label>
+                                                    <span class="switch-label ml-2">salary changed</span>
+                                                </div>
+                                                <input id="salary-change-amount" type="text" placeholder="change amount" disabled />
+                                            </div>
+                                            <div class="col-6">
+                                                <div class="mb-3">
+                                                    <label class="switch">
+                                                        <input type="checkbox" checked/>
+                                                        <span class="slider"></span>
+                                                    </label>
+                                                    <span class="switch-label ml-2">satisfied</span>
+                                                </div>
+                                                <input id="expected" type="text" placeholder="expected" disabled />
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- FOLLOW UP SWHITCH -->
+                                <div class="col-12 mb-2">
+                                    <label class="switch">
+                                        <input type="checkbox" id="follow-up">
+                                        <span class="slider"></span>
+                                    </label>
+                                    <span class="switch-label ml-2">open follow-up</span>
+                                </div>
+                                <div id="follow-up-reasons" class="col-12 mb-4" style="display:none;">
+                                    <div class="border rounded bg-light p-3">
+                                        <div class="row">
+                                            <div class="col-12">
+                                                <span class="fb-panel-title mb-3">follow-up reasons</span>
+                                            </div>
+                                            <div class="col-12 col-md-6 col-lg-4 mb-2">
+                                                <input type="checkbox" class="topic" name="1" data-tab="wo-topic" />
+                                                <label class="ml-1" for="1">work organisation</label>
+                                            </div>
+                                            <div class="col-12 col-md-6 col-lg-4 mb-2">
+                                                <input type="checkbox" class="topic" name="2" data-tab="tc-topic" />
+                                                <label class="ml-1" for="2">team communication</label>
+                                            </div>
+                                            <div class="col-12 col-md-6 col-lg-4 mb-2">
+                                                <input type="checkbox" class="topic" name="3" data-tab="tlc-topic" />
+                                                <label class="ml-1" for="3">team lead communication</label>
+                                            </div>
+                                            <div class="col-12 col-md-6 col-lg-4 mb-2">
+                                                <input type="checkbox" class="topic" name="4" data-tab="cc-topic" />
+                                                <label class="ml-1" for="4">client communication</label>
+                                            </div>
+                                            <div class="col-12 col-md-6 col-lg-4 mb-2">
+                                                <input id="salary" class="topic" type="checkbox" name="5" data-tab="s-topic" />
+                                                <label class="ml-1" for="5">salary</label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div id="follow-up-form" class="col-12 mb-4" style="display: none;">
+                                    <h6 id="follow-up-title" class="d-block py-2 mb-3 border-bottom">End of Probation follow-up</h6>
+                                    <div class="row">
+                                        <div class="col-6">
+                                            <label for="talk-date">talk date</label>
+                                            <input type="text" name="talk-date" class="mb-4">
+                                        </div>
+                                        <div class="col-6">
+                                            <label for="hr-reporter-name">HR reporter</label>
+                                            <input type="text" name="hr-reporter-name" class="mb-4" value="Name Last Name of the curent user" disabled="">
+                                        </div>
+                                    </div>
+                                    <div id="wo-topic" class="topic border rounded bg-light p-3 mb-3" style="display:none">
+                                        <div class="d-flex justify-content-between align-items-center">
+                                            <span class="fb-panel-title w-auto">work organisation</span>
+                                            <div>
+                                                <label class="switch">
+                                                    <input type="checkbox" class="resolved">
+                                                    <span class="slider"></span>
+                                                </label>
+                                                <span class="switch-label ml-2">resolved</span>
+                                            </div>
+                                        </div>
+                                        <textarea id="unresolved" class="mt-3" placeholder="further steps / notes"></textarea>
+                                    </div>
+                                    <div id="tc-topic" class="topic border rounded bg-light p-3 mb-3" style="display:none">
+                                        <div class="d-flex justify-content-between align-items-center">
+                                            <span class="fb-panel-title w-auto">team communication</span>
+                                            <div>
+                                                <label class="switch">
+                                                    <input type="checkbox" class="resolved">
+                                                    <span class="slider"></span>
+                                                </label>
+                                                <span class="switch-label ml-2">resolved</span>
+                                            </div>
+                                        </div>
+                                        <textarea id="unresolved" class="mt-3" placeholder="further steps / notes"></textarea>
+                                    </div>
+                                    <div id="tlc-topic" class="topic border rounded bg-light p-3 mb-3" style="display:none">
+                                        <div class="d-flex justify-content-between align-items-center">
+                                            <span class="fb-panel-title w-auto">team lead communication</span>
+                                            <div>
+                                                <label class="switch">
+                                                    <input type="checkbox" class="resolved">
+                                                    <span class="slider"></span>
+                                                </label>
+                                                <span class="switch-label ml-2">resolved</span>
+                                            </div>
+                                        </div>
+                                        <textarea id="unresolved" class="mt-3" placeholder="further steps / notes"></textarea>
+                                    </div>
+                                    <div id="cc-topic" class="topic border rounded bg-light p-3 mb-3" style="display:none">
+                                        <div class="d-flex justify-content-between align-items-center">
+                                            <span class="fb-panel-title w-auto">client communication</span>
+                                            <div>
+                                                <label class="switch">
+                                                    <input type="checkbox" class="resolved">
+                                                    <span class="slider"></span>
+                                                </label>
+                                                <span class="switch-label ml-2">resolved</span>
+                                            </div>
+                                        </div>
+                                        <textarea id="unresolved" class="mt-3" placeholder="further steps / notes"></textarea>
+                                    </div>
+                                    <div id="s-topic" class="topic border rounded bg-light p-3 mb-3" style="display:none">
+                                        <div class="d-flex justify-content-between align-items-center">
+                                            <span class="fb-panel-title w-auto">salary</span>
+                                            <div>
+                                                <label class="switch">
+                                                    <input type="checkbox" class="resolved">
+                                                    <span class="slider"></span>
+                                                </label>
+                                                <span class="switch-label ml-2">resolved</span>
+                                            </div>
+                                        </div>
+                                        <textarea id="unresolved" class="mt-3" placeholder="further steps / notes"></textarea>
+                                    </div>
+                                    <div class="mb-3">
+                                        <label for="hr-notes">HR Notes</label>
+                                        <textarea name="hr-notes" rows="2"></textarea>
+                                    </div>
+                                    <div>
+                                        <div class="border rounded bg-light p-3">
+                                            <span class="fb-panel-title mb-3">salary after follow-up</span>
+                                            <div class="row">
+                                                <div class="col-6">
+                                                    <div class="mb-3">
+                                                        <label class="switch">
+                                                            <input id="changed-follow-up" type="checkbox">
+                                                            <span class="slider"></span>
+                                                        </label>
+                                                        <span class="switch-label ml-2">salary changed</span>
+                                                    </div>
+                                                    <input id="amount-follow-up" type="text" placeholder="change amount" disabled>
+                                                </div>
+                                                <div class="col-6">
+                                                    <div class="mb-3">
+                                                        <label class="switch">
+                                                            <input id="satisfied-follow-up" type="checkbox" />
+                                                            <span class="slider"></span>
+                                                        </label>
+                                                        <span class="switch-label ml-2">satisfied</span>
+                                                    </div>
+                                                    <input id="satisfied-amount-follow-up" type="text" placeholder="expected">
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="tab-content" id="tab-line" style="display: none;">
+                            <div class="row mt-4">
+                                <div class="col-6">
+                                    <label for="talk-date">talk date</label>
+                                    <input type="text" name="talk-date" class="mb-4" value="21.07.2020" disabled />
+                                </div>
+                                <div class="col-6">
+                                    <label for="line-manager-name">line manager</label>
+                                    <input type="text" name="line-manager-name" class="mb-4" value="Jean Claude Van Damme" disabled />
+                                </div>
+                                <div class="col-12">
+                                    <label for="performance-feedback">Performance feedback</label>
+                                    <textarea name="performance-feedback" class="mb-2" rows="2" disabled> some impressions...</textarea>
+                                </div>
+                                <div class="col-12">
+                                    <label for="next-steps">Next steps</label>
+                                    <textarea name="next-steps" class="mb-2" rows="2" disabled> some impressions...</textarea>
+                                </div>
+                                <div class="col-12">
+                                    <label for="recommendation">Recommendation</label>
+                                    <textarea name="recommendation" class="mb-2" rows="2" disabled> some impressions...</textarea>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="tab-content" id="tab-lead" style="display: none;">
+                            <div class="row mt-4">
+                                <div class="col-6">
+                                    <label for="talk-date">talk date</label>
+                                    <input type="text" name="talk-date" class="mb-4" value="18.07.2020" disabled />
+                                </div>
+                                <div class="col-6">
+                                    <label for="team-lead-name">team lead</label>
+                                    <input type="text" name="team-lead-name" class="mb-4" value="Mitar Miric" disabled />
+                                </div>
+                                <div class="col-12">
+                                    <label for="performance-feedback">Performance feedback</label>
+                                    <textarea name="performance-feedback" class="mb-2" rows="2" disabled> some impressions...</textarea>
+                                </div>
+                                <div class="col-12">
+                                    <label for="next-steps">Next steps</label>
+                                    <textarea name="next-steps" class="mb-2" rows="2" disabled> some impressions...</textarea>
+                                </div>
+                                <div class="col-12">
+                                    <label for="recommendation">Recommendation</label>
+                                    <textarea name="recommendation" class="mb-2" rows="2" disabled> some impressions...</textarea>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="tab-content" id="tab-client" style="display: none;">
+                            <div class="row mt-4">
+                                <div class="col-6">
+                                    <label for="talk-date">talk date</label>
+                                    <input type="text" name="talk-date" class="mb-4" />
+                                </div>
+                                <div class="col-6">
+                                    <label for="client-name">client</label>
+                                    <input type="text" name="client-name" class="mb-4" value="Edelweiss" disabled />
+                                </div>
+                                <div class="col-12">
+                                    <label for="performance-feedback">Performance feedback</label>
+                                    <textarea name="performance-feedback" class="mb-2" rows="2"></textarea>
+                                </div>
+                                <div class="col-12">
+                                    <label for="next-steps">Next steps</label>
+                                    <textarea name="next-steps" class="mb-2" rows="2"></textarea>
+                                </div>
+                                <div class="col-12">
+                                    <label for="recommendation">Recommendation</label>
+                                    <textarea name="recommendation" class="mb-2" rows="2"></textarea>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-12 text-center mt-3">
+                            <button id="nt-save" class="nt-save confirm mr-2" data-dismiss="modal" aria-label="Close">save changes</button>
+                            <button class="cancel" data-dismiss="modal" aria-label="Close">cancel</button>
+                        </div>
+                    </div>
+                </div>
+
+
+            </div>
+        </div>
+
+    </div>
+
+    <footer>
+    </footer>
+</body>
+
+</html>
